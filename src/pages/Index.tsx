@@ -10,12 +10,14 @@ import WhySolarSection from '@/components/ui/why-solar-section';
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-primary">
       <Navigation />
       <HeroSection />
       <StatsSection />
       <AboutSection />
+      <WhySolarSection />
       <ServicesSection />
+      <PortfolioSection />
       <ContactSection />
       <Footer />
     </div>
