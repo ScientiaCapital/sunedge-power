@@ -1,41 +1,41 @@
-import { Zap, Building, MapPin, Award } from "lucide-react";
+import { Zap, Building, MapPin, Award, Wrench, Users } from "lucide-react";
 
 const StatsSection = () => {
   const stats = [
     {
       icon: <Award className="h-8 w-8" />,
       value: "Since 2006",
-      label: "In Solar Business",
-      description: "18+ years of proven expertise"
+      label: "Florida Solar Experts",
+      description: "18+ years of proven expertise statewide",
     },
     {
-      icon: <Building className="h-8 w-8" />,
-      value: "1,000+",
-      label: "Projects Completed",
-      description: "Across residential & commercial"
-    },
-    {
-      icon: <Zap className="h-8 w-8" />,
-      value: "50+",
-      label: "MW Installed",
-      description: "Clean energy capacity delivered"
+      icon: <Wrench className="h-8 w-8" />,
+      value: "Specialized",
+      label: "Equipment Fleet",
+      description: "Advanced drilling & ground mount tools",
     },
     {
       icon: <MapPin className="h-8 w-8" />,
-      value: "50 States",
-      label: "Nationwide Coverage",
-      description: "Operating across America"
-    }
+      value: "Statewide",
+      label: "Local Market Knowledge",
+      description: "Permitting, regulations, utilities",
+    },
+    {
+      icon: <Users className="h-8 w-8" />,
+      value: "Partners",
+      label: "Flexible Model",
+      description: "Expert install, you focus on sales",
+    },
   ];
 
   return (
     <section className="relative py-20 bg-gradient-stats overflow-hidden">
       <div className="absolute inset-0 bg-black/10"></div>
-      
+
       <div className="relative z-10 container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
-            <div 
+            <div
               key={index}
               className="text-center text-white transform hover:scale-105 transition-transform duration-300"
             >
@@ -45,12 +45,8 @@ const StatsSection = () => {
               <div className="text-4xl md:text-5xl font-bold mb-2">
                 {stat.value}
               </div>
-              <div className="text-xl font-semibold mb-2">
-                {stat.label}
-              </div>
-              <div className="text-white/80 text-sm">
-                {stat.description}
-              </div>
+              <div className="text-xl font-semibold mb-2">{stat.label}</div>
+              <div className="text-white/80 text-sm">{stat.description}</div>
             </div>
           ))}
         </div>

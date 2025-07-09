@@ -10,26 +10,29 @@ const ContactSection = () => {
       icon: <Phone className="h-6 w-6" />,
       title: "Call Us",
       content: "(555) 123-SOLAR",
-      subtitle: "Mon-Fri 8AM-6PM EST"
+      subtitle: "Mon-Fri 8AM-6PM EST",
     },
     {
       icon: <Mail className="h-6 w-6" />,
-      title: "Email Us", 
+      title: "Email Us",
       content: "info@sunedgepower.com",
-      subtitle: "24/7 Response Team"
+      subtitle: "24/7 Response Team",
     },
     {
       icon: <MapPin className="h-6 w-6" />,
       title: "Service Area",
-      content: "All 50 United States",
-      subtitle: "Nationwide Coverage"
-    }
+      content: "Florida Statewide",
+      subtitle: "Florida Solar Experts",
+    },
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gradient-hero relative overflow-hidden">
+    <section
+      id="contact"
+      className="py-20 bg-gradient-hero relative overflow-hidden"
+    >
       <div className="absolute inset-0 bg-black/60"></div>
-      
+
       <div className="relative z-10 container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -37,11 +40,10 @@ const ContactSection = () => {
             Get In Touch
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-            Ready to Power Your Project?
+            Ready to Harness Florida's Sunshine?
           </h2>
           <p className="text-xl text-white/90 max-w-3xl mx-auto">
-            Partner with America&apos;s premier solar installation experts. 
-            Let&apos;s discuss how we can help you succeed nationwide.
+            Contact SunEdge Power today to discuss your solar installation needs or explore partnership opportunities. Benefit from our experience since 2006.
           </p>
         </div>
 
@@ -49,15 +51,22 @@ const ContactSection = () => {
           {/* Contact Information */}
           <div className="lg:col-span-1 space-y-6">
             {contactInfo.map((info, index) => (
-              <Card key={index} className="bg-white/10 backdrop-blur-sm border-white/20 text-white">
+              <Card
+                key={index}
+                className="bg-white/10 backdrop-blur-sm border-white/20 text-white"
+              >
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0 w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center border border-secondary/30">
                       {info.icon}
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg mb-1">{info.title}</h3>
-                      <p className="text-secondary font-medium">{info.content}</p>
+                      <h3 className="font-semibold text-lg mb-1">
+                        {info.title}
+                      </h3>
+                      <p className="text-secondary font-medium">
+                        {info.content}
+                      </p>
                       <p className="text-white/70 text-sm">{info.subtitle}</p>
                     </div>
                   </div>
@@ -67,13 +76,13 @@ const ContactSection = () => {
 
             {/* Sunny Mascot */}
             <div className="text-center mt-8">
-              <img 
-                src="/lovable-uploads/33804a65-aead-4a38-bfd0-69852f8761a7.png" 
-                alt="Sunny says hello" 
+              <img
+                src="/lovable-uploads/33804a65-aead-4a38-bfd0-69852f8761a7.png"
+                alt="Sunny says hello"
                 className="h-32 w-auto mx-auto drop-shadow-2xl"
               />
               <p className="text-white/80 text-sm mt-4">
-                Sunny is excited to help with your solar project!
+                Sunny is excited to help with your Florida solar project!
               </p>
             </div>
           </div>
@@ -92,7 +101,7 @@ const ContactSection = () => {
                   <label className="block text-white/90 text-sm font-medium mb-2">
                     First Name *
                   </label>
-                  <Input 
+                  <Input
                     placeholder="John"
                     className="bg-white/20 border-white/30 text-white placeholder:text-white/50"
                   />
@@ -101,7 +110,7 @@ const ContactSection = () => {
                   <label className="block text-white/90 text-sm font-medium mb-2">
                     Last Name *
                   </label>
-                  <Input 
+                  <Input
                     placeholder="Doe"
                     className="bg-white/20 border-white/30 text-white placeholder:text-white/50"
                   />
@@ -113,7 +122,7 @@ const ContactSection = () => {
                   <label className="block text-white/90 text-sm font-medium mb-2">
                     Email *
                   </label>
-                  <Input 
+                  <Input
                     type="email"
                     placeholder="john@company.com"
                     className="bg-white/20 border-white/30 text-white placeholder:text-white/50"
@@ -123,7 +132,7 @@ const ContactSection = () => {
                   <label className="block text-white/90 text-sm font-medium mb-2">
                     Phone
                   </label>
-                  <Input 
+                  <Input
                     type="tel"
                     placeholder="(555) 123-4567"
                     className="bg-white/20 border-white/30 text-white placeholder:text-white/50"
@@ -135,7 +144,7 @@ const ContactSection = () => {
                 <label className="block text-white/90 text-sm font-medium mb-2">
                   Company
                 </label>
-                <Input 
+                <Input
                   placeholder="Your Solar Company"
                   className="bg-white/20 border-white/30 text-white placeholder:text-white/50"
                 />
@@ -145,15 +154,15 @@ const ContactSection = () => {
                 <label className="block text-white/90 text-sm font-medium mb-2">
                   Project Details *
                 </label>
-                <Textarea 
+                <Textarea
                   placeholder="Tell us about your solar installation project, location, and timeline..."
                   rows={4}
                   className="bg-white/20 border-white/30 text-white placeholder:text-white/50 resize-none"
                 />
               </div>
 
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 variant="secondary"
                 className="w-full text-lg py-4 rounded-full shadow-glow hover:shadow-xl transition-all duration-300"
               >
@@ -161,7 +170,7 @@ const ContactSection = () => {
               </Button>
 
               <p className="text-white/60 text-sm text-center">
-                * Required fields. We&apos;ll respond within 24 hours.
+                * Required fields. We'll respond within 24 hours.
               </p>
             </CardContent>
           </Card>

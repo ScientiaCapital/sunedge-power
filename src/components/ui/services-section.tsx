@@ -1,59 +1,84 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { 
-  Wrench, 
-  Building, 
-  MapPin, 
-  Users, 
-  Zap, 
-  ShieldCheck,
+import {
+  Wrench,
+  Building,
+  MapPin,
+  Users,
+  Zap,
+  Home,
+  RefreshCw,
+  Handshake,
   Settings,
-  TrendingUp
+  TrendingUp,
 } from "lucide-react";
 
 const ServicesSection = () => {
   const services = [
     {
-      icon: <Wrench className="h-8 w-8" />,
-      title: "Ground Mount Installations",
-      description: "Specialized expertise in large-scale ground mount systems with advanced drilling equipment and proven installation techniques.",
-      highlights: ["Advanced drilling equipment", "Proven installation methods", "Optimal site preparation"]
+      icon: <Home className="h-8 w-8" />,
+      title: "Residential Solar",
+      description:
+        "Expert installation of residential solar systems on all roof types, designed to maximize energy savings for Florida homeowners.",
+      highlights: [
+        "Custom system design",
+        "All roof types",
+        "Energy savings",
+      ],
     },
     {
       icon: <Building className="h-8 w-8" />,
-      title: "Commercial Projects", 
-      description: "Comprehensive commercial solar solutions from design to completion, handling complex projects with precision and efficiency.",
-      highlights: ["Design to completion", "Complex project management", "Commercial expertise"]
+      title: "Commercial Solar",
+      description:
+        "Specialized commercial installations, including rooftop and ground mount systems, leveraging our heavy equipment and expertise.",
+      highlights: [
+        "Rooftop & ground mount",
+        "Heavy equipment",
+        "Commercial expertise",
+      ],
     },
     {
-      icon: <Users className="h-8 w-8" />,
-      title: "Partnership Solutions",
-      description: "Flexible partnership models allowing solar companies to expand nationwide while we handle expert installation services.",
-      highlights: ["Flexible partnerships", "Nationwide expansion", "Expert installation teams"]
+      icon: <Wrench className="h-8 w-8" />,
+      title: "Ground Mount Systems",
+      description:
+        "Our specialty. We utilize advanced drilling equipment and techniques for optimal stability and performance in Florida's terrain.",
+      highlights: [
+        "Advanced drilling",
+        "Optimal stability",
+        "Florida terrain expertise",
+      ],
     },
     {
-      icon: <MapPin className="h-8 w-8" />,
-      title: "Nationwide Coverage",
-      description: "Operating across all 50 states with local knowledge and established processes to ensure successful project delivery.",
-      highlights: ["All 50 states", "Local market knowledge", "Established processes"]
-    }
+      icon: <RefreshCw className="h-8 w-8" />,
+      title: "Detach & Reset",
+      description:
+        "Professional solar panel removal and reinstallation services to accommodate roof repairs or replacements.",
+      highlights: [
+        "Safe removal",
+        "Expert reinstallation",
+        "Warranty protection",
+      ],
+    },
   ];
 
   const coreStrengths = [
     {
-      icon: <ShieldCheck className="h-6 w-6 text-secondary" />,
-      title: "Experience Since 2006",
-      description: "Deep roots in America's solar industry with unmatched expertise and proven track record."
-    },
-    {
       icon: <Settings className="h-6 w-6 text-secondary" />,
       title: "Specialized Equipment",
-      description: "Advanced drilling and installation equipment for complex ground mount projects."
+      description:
+        "Advanced equipment for drilling and ground mount installations enables us to tackle complex commercial projects efficiently and safely.",
     },
     {
-      icon: <TrendingUp className="h-6 w-6 text-secondary" />,
-      title: "Proven Growth Partner",
-      description: "Helping solar companies succeed nationwide with our installation expertise."
-    }
+      icon: <MapPin className="h-6 w-6 text-secondary" />,
+      title: "Local Market Knowledge",
+      description:
+        "We expertly navigate Florida's unique regulations, permitting, and utility requirements, streamlining the process for our partners.",
+    },
+    {
+      icon: <Handshake className="h-6 w-6 text-secondary" />,
+      title: "Partnership Focused",
+      description:
+        "Our flexible model allows partners to leverage our installation expertise while focusing on sales and customer acquisition.",
+    },
   ];
 
   return (
@@ -65,23 +90,23 @@ const ServicesSection = () => {
             Our Services
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            Comprehensive Solar Solutions
+            Comprehensive Solar Solutions for Florida
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            From ground mount installations to nationwide commercial projects, 
-            we deliver expert solar solutions across America.
+            SunEdge Power offers comprehensive solar installation and related services for residential and commercial projects. With our specialized equipment and extensive experience since 2006, we provide high-quality, reliable solutions.
           </p>
         </div>
 
         {/* Main Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-20">
           {services.map((service, index) => (
-            <Card key={index} className="group hover:shadow-elegant transition-all duration-300 border-2 hover:border-secondary/20">
+            <Card
+              key={index}
+              className="group hover:shadow-elegant transition-all duration-300 border-2 hover:border-secondary/20"
+            >
               <CardHeader>
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-accent rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <div className="text-white">
-                    {service.icon}
-                  </div>
+                  <div className="text-white">{service.icon}</div>
                 </div>
                 <CardTitle className="text-2xl mb-4">{service.title}</CardTitle>
               </CardHeader>

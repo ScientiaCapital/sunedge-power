@@ -2,7 +2,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
+
   return (
     <footer className="bg-primary text-primary-foreground py-12">
       <div className="container mx-auto px-4">
@@ -10,15 +10,16 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-3 mb-4">
-              <img 
-                src="/lovable-uploads/356f7c51-3f64-4d92-96d7-4711e82204e5.png" 
-                alt="SunEdge Power Logo" 
+              <img
+                src="/lovable-uploads/356f7c51-3f64-4d92-96d7-4711e82204e5.png"
+                alt="SunEdge Power Logo"
                 className="h-8 w-auto brightness-0 invert"
               />
             </div>
             <p className="text-primary-foreground/80 mb-4 leading-relaxed">
-              America&apos;s premier solar installation partner since 2006. 
-              Specializing in ground mount installations and commercial projects nationwide.
+              America&apos;s premier solar installation partner since 2006.
+              Specializing in ground mount installations and commercial projects
+              nationwide.
             </p>
             <div className="text-sm text-primary-foreground/60">
               Licensed • Bonded • Insured
@@ -29,12 +30,54 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2 text-primary-foreground/80">
-              <li><a href="#home" className="hover:text-secondary transition-colors">Home</a></li>
-              <li><a href="#about" className="hover:text-secondary transition-colors">About</a></li>
-              <li><a href="#services" className="hover:text-secondary transition-colors">Services</a></li>
-              <li><a href="#team" className="hover:text-secondary transition-colors">Our Team</a></li>
-              <li><a href="#equipment" className="hover:text-secondary transition-colors">Equipment</a></li>
-              <li><a href="#contact" className="hover:text-secondary transition-colors">Contact</a></li>
+              <li>
+                <a
+                  href="#home"
+                  className="hover:text-secondary transition-colors"
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  className="hover:text-secondary transition-colors"
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  className="hover:text-secondary transition-colors"
+                >
+                  Services
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#team"
+                  className="hover:text-secondary transition-colors"
+                >
+                  Our Team
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#equipment"
+                  className="hover:text-secondary transition-colors"
+                >
+                  Equipment
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  className="hover:text-secondary transition-colors"
+                >
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -65,9 +108,15 @@ const Footer = () => {
               © {currentYear} SunEdge Power LLC. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm text-primary-foreground/60">
-              <a href="#" className="hover:text-secondary transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-secondary transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-secondary transition-colors">Licensing</a>
+              <a href="#" className="hover:text-secondary transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="hover:text-secondary transition-colors">
+                Terms of Service
+              </a>
+              <a href="#" className="hover:text-secondary transition-colors">
+                Licensing
+              </a>
             </div>
           </div>
         </div>

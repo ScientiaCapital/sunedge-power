@@ -1,73 +1,102 @@
-# Welcome to your Lovable project
+# SunEdge Power
 
-## Project info
+## Since 2006 – Florida Solar Experts
 
-**URL**: https://lovable.dev/projects/14a6b7eb-6adc-4ddf-8a43-5c13462cd751
+SunEdge Power has been a leader in Florida's solar industry since 2006. As a licensed, bonded, and insured Class "A" General Contractor, we bring decades of combined construction and solar installation experience to every project, covering the entire state of Florida.
 
-## How can I edit this code?
+What sets us apart is our early adoption of solar technology and our continued investment in specialized equipment for drilling and ground mount installations. This, combined with our deep understanding of Florida's unique market, allows us to handle complex residential and commercial projects with unmatched expertise.
 
-There are several ways of editing your application.
+Our flexible partnership model allows us to collaborate with various sales organizations, focusing on what we do best – expert installation. We are dedicated to helping companies succeed in Florida by leveraging our local know-how, established processes, and skilled installation teams. Meet our leadership team and contact us today to explore how our partnership can accelerate your growth in the Florida solar market.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/14a6b7eb-6adc-4ddf-8a43-5c13462cd751) and start prompting.
+## Our Core Strengths
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Experience Since 2006:** Deep roots in Florida's solar industry, Class "A" Contractor license, and unmatched expertise.
+- **Specialized Equipment:** Advanced drilling and ground mount equipment for complex commercial projects.
+- **Local Market Knowledge:** Expert navigation of Florida's regulations, permitting, and utility requirements.
+- **Partnership Focused:** Flexible models for partners to leverage our installation expertise while focusing on sales and customer acquisition.
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Our Solar Services
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+SunEdge Power offers comprehensive solar installation and related services for residential and commercial projects. With our specialized equipment and extensive experience since 2006, we provide high-quality, reliable solutions.
 
-Follow these steps:
+- **Residential Solar:** Expert installation on all roof types, maximizing energy savings for Florida homeowners.
+- **Commercial Solar:** Specialized commercial installations, including rooftop and ground mount systems.
+- **Ground Mount Systems:** Our specialty, using advanced drilling equipment for optimal stability and performance.
+- **Detach & Reset:** Professional solar panel removal and reinstallation for roof repairs or replacements.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Our Proven Installation Process
 
-# Step 3: Install the necessary dependencies.
-npm i
+1. **Consultation & Assessment:** Discuss goals, review property, and conduct site evaluation.
+2. **Custom System Design:** Tailored design for maximum energy production.
+3. **Permitting & Approvals:** We handle all permits and utility agreements.
+4. **Expert Installation:** Experienced team, specialized equipment, best practices.
+5. **Activation & Monitoring:** System commissioning, training, and monitoring setup.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+---
 
-**Edit a file directly in GitHub**
+## Roofer Partnership Opportunities
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+SunEdge Power offers strategic partnerships for solar companies and roofers looking to expand or enhance their presence in Florida. Leverage our local expertise, specialized equipment, and streamlined processes to grow your business.
 
-**Use GitHub Codespaces**
+Flexible partnership models allow you to focus on sales and customer relationships while we provide expert installation services and smooth project execution.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## What Our Partners Say
 
-This project is built with:
+> "Working with SunEdge Power has been seamless. Their expertise in ground mount installations and knowledge of Florida regulations is invaluable. They are a true partner."
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+> "SunEdge Power's specialized equipment made our large commercial project possible. Their team is professional, efficient, and delivered exceptional quality."
 
-## How can I deploy this project?
+> "As a roofer, handling solar detach/reset was a headache. SunEdge Power took over that process, allowing us to focus on roofing. Highly recommend!"
 
-Simply open [Lovable](https://lovable.dev/projects/14a6b7eb-6adc-4ddf-8a43-5c13462cd751) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+## Meet Our Leadership Team
 
-Yes, you can!
+### Ron McCabe – Managing Member & Partner (Since 2006)
+Licensed Class "A" General Contractor, founder, and solar industry leader. Ron brings extensive construction and heavy equipment expertise, specializing in complex installations and business development.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Kyle Amundsen – Partner & Solar Operations Director
+Seasoned solar executive with experience in residential, commercial, and utility-scale projects. Kyle leads all solar operations, specializing in system design, installation, and project management.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+---
+
+## Contact Us
+
+Ready to harness Florida's sunshine? Contact SunEdge Power today to discuss your solar installation needs or explore partnership opportunities. Benefit from our experience since 2006.
+
+---
+
+## Technical Overview (for Developers)
+
+- **Frontend:** React, Vite, TypeScript, Tailwind CSS (shadcn-ui)
+- **Backend (Planned):** Node.js, TypeScript, Express (MCP Server)
+- **Validation & Tooling:** ESLint, Prettier, TypeScript, Jest, Playwright, Husky, lint-staged, Snyk, Bundlemon
+- **AI/Dev Environment:** Cursor IDE, VS Code, GitHub Copilot, SonarCloud
+
+### Local Development
+
+1. Install dependencies:
+   ```sh
+   npm install
+   ```
+2. Start the frontend:
+   ```sh
+   npm run dev
+   ```
+3. (Planned) Start the backend:
+   ```sh
+   cd server
+   npm run dev
+   ```
+
+---
+
+**Deployed on Vercel:** [Production Site](https://sunny-web-power-345tvuaqt-scientiacapitals-projects.vercel.app)
