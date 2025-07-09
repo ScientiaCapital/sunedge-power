@@ -1,4 +1,3 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import { CohereClient } from 'cohere-ai';
 import { AI_CONFIG } from './ai-config';
 
@@ -27,11 +26,6 @@ export const checkRateLimit = (key: string): boolean => {
 };
 
 // Initialize AI clients
-const initGemini = () => {
-  if (!AI_CONFIG.geminiKey) return null;
-  return new GoogleGenerativeAI(AI_CONFIG.geminiKey);
-};
-
 const initCohere = () => {
   if (!AI_CONFIG.cohereKey) return null;
   return new CohereClient({
@@ -41,22 +35,58 @@ const initCohere = () => {
 
 // Chat service
 export const chatWithAI = async (message: string, context?: string): Promise<string> => {
+  console.log('chatWithAI called with:', { message, hasContext: !!context });
+  console.log('AI_CONFIG.geminiKey exists:', !!AI_CONFIG.geminiKey);
+
   if (!checkRateLimit('chat')) {
     return "I'm currently experiencing high demand. Please try again in a few minutes.";
   }
 
   try {
-    // Try Gemini first (free tier)
+    // Try Gemini 2.0 Flash first (free tier)
     if (AI_CONFIG.geminiKey) {
-      const genAI = initGemini();
-      if (genAI) {
-        const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
-        const prompt = context
-          ? `Context: ${context}\n\nUser: ${message}\n\nAssistant (helpful solar energy expert):`
-          : `User: ${message}\n\nAssistant (helpful solar energy expert):`;
-        const result = await model.generateContent(prompt);
-        return result.response.text();
+      const prompt = context
+        ? `Context: ${context}\n\nUser: ${message}\n\nAssistant (helpful solar energy expert):`
+        : `User: ${message}\n\nAssistant (helpful solar energy expert):`;
+
+      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${AI_CONFIG.geminiKey}`;
+      console.log('Calling Gemini API...');
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text: prompt,
+                },
+              ],
+            },
+          ],
+          generationConfig: {
+            maxOutputTokens: 1000,
+            temperature: 0.7,
+          },
+        }),
+      });
+
+      console.log('Gemini API response status:', response.status);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Gemini API error:', response.status, errorText);
+        throw new Error('Gemini API request failed');
       }
+
+      const data = await response.json();
+      if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
+        return data.candidates[0].content.parts[0].text;
+      }
+      throw new Error('Invalid response from Gemini API');
     }
 
     // Fallback to Cohere
@@ -123,16 +153,42 @@ export const getRecommendations = async (userBehavior: {
 
   try {
     if (AI_CONFIG.geminiKey) {
-      const genAI = initGemini();
-      if (genAI) {
-        const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
-        const prompt = `Based on user viewing: ${userBehavior.views.join(', ')} and interests in: ${userBehavior.interests.join(', ')}, recommend 3 relevant solar energy topics. Return only the topic names, one per line.`;
-        const result = await model.generateContent(prompt);
-        return result.response
-          .text()
-          .split('\n')
-          .filter((r) => r.trim())
-          .slice(0, 3);
+      const prompt = `Based on user viewing: ${userBehavior.views.join(', ')} and interests in: ${userBehavior.interests.join(', ')}, recommend 3 relevant solar energy topics. Return only the topic names, one per line.`;
+
+      const response = await fetch(
+        'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-goog-api-key': AI_CONFIG.geminiKey,
+          },
+          body: JSON.stringify({
+            contents: [
+              {
+                parts: [
+                  {
+                    text: prompt,
+                  },
+                ],
+              },
+            ],
+            generationConfig: {
+              maxOutputTokens: 100,
+              temperature: 0.7,
+            },
+          }),
+        },
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
+          return data.candidates[0].content.parts[0].text
+            .split('\n')
+            .filter((r) => r.trim())
+            .slice(0, 3);
+        }
       }
     }
 
@@ -163,13 +219,40 @@ export const generateMetaDescription = async (
 
   try {
     if (AI_CONFIG.geminiKey) {
-      const genAI = initGemini();
-      if (genAI) {
-        const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
-        const prompt = `Create a compelling 150-character meta description for a solar company webpage titled "${pageTitle}". Content summary: ${pageContent.substring(0, 200)}...`;
-        const result = await model.generateContent(prompt);
-        const description = result.response.text().trim();
-        return description.length > 160 ? description.substring(0, 157) + '...' : description;
+      const prompt = `Create a compelling 150-character meta description for a solar company webpage titled "${pageTitle}". Content summary: ${pageContent.substring(0, 200)}...`;
+
+      const response = await fetch(
+        'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-goog-api-key': AI_CONFIG.geminiKey,
+          },
+          body: JSON.stringify({
+            contents: [
+              {
+                parts: [
+                  {
+                    text: prompt,
+                  },
+                ],
+              },
+            ],
+            generationConfig: {
+              maxOutputTokens: 100,
+              temperature: 0.7,
+            },
+          }),
+        },
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
+          const description = data.candidates[0].content.parts[0].text.trim();
+          return description.length > 160 ? description.substring(0, 157) + '...' : description;
+        }
       }
     }
 

@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -17,13 +17,10 @@ const Footer = () => {
               />
             </div>
             <p className="text-primary-foreground/80 mb-4 leading-relaxed">
-              America&apos;s premier solar installation partner since 2006.
-              Specializing in ground mount installations and commercial projects
-              nationwide.
+              America&apos;s premier solar installation partner since 2006. Specializing in ground
+              mount installations and commercial projects nationwide.
             </p>
-            <div className="text-sm text-primary-foreground/60">
-              Licensed • Bonded • Insured
-            </div>
+            <div className="text-sm text-primary-foreground/60">Licensed • Bonded • Insured</div>
           </div>
 
           {/* Quick Links */}
@@ -31,50 +28,32 @@ const Footer = () => {
             <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2 text-primary-foreground/80">
               <li>
-                <a
-                  href="#home"
-                  className="hover:text-secondary transition-colors"
-                >
+                <a href="#home" className="hover:text-secondary transition-colors">
                   Home
                 </a>
               </li>
               <li>
-                <a
-                  href="#about"
-                  className="hover:text-secondary transition-colors"
-                >
+                <a href="#about" className="hover:text-secondary transition-colors">
                   About
                 </a>
               </li>
               <li>
-                <a
-                  href="#services"
-                  className="hover:text-secondary transition-colors"
-                >
+                <a href="#services" className="hover:text-secondary transition-colors">
                   Services
                 </a>
               </li>
               <li>
-                <a
-                  href="#team"
-                  className="hover:text-secondary transition-colors"
-                >
+                <a href="#team" className="hover:text-secondary transition-colors">
                   Our Team
                 </a>
               </li>
               <li>
-                <a
-                  href="#equipment"
-                  className="hover:text-secondary transition-colors"
-                >
+                <a href="#equipment" className="hover:text-secondary transition-colors">
                   Equipment
                 </a>
               </li>
               <li>
-                <a
-                  href="#contact"
-                  className="hover:text-secondary transition-colors"
-                >
+                <a href="#contact" className="hover:text-secondary transition-colors">
                   Contact
                 </a>
               </li>
@@ -126,3 +105,4 @@ const Footer = () => {
 };
 
 export default Footer;
+export { Footer };

@@ -34,14 +34,7 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
 
     try {
       // Send email
-      await sendEmail({
-        to_name: 'SunEdge Power Team',
-        from_name: `${data.firstName} ${data.lastName}`,
-        from_email: data.email,
-        company: data.company,
-        phone: data.phone || 'Not provided',
-        message: data.projectDetails,
-      });
+      await sendEmail(data);
 
       setSubmitStatus('success');
       toast({

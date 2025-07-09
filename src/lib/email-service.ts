@@ -97,3 +97,30 @@ export const formatPhone = (phone: string): string => {
   }
   return phone;
 };
+
+// Main sendEmail function that the contact form uses
+export const sendEmail = async (formData: ContactFormData): Promise<void> => {
+  if (!AI_CONFIG.emailjs.serviceId || !AI_CONFIG.emailjs.templateId) {
+    throw new Error('Email service not configured');
+  }
+
+  try {
+    // Send the main notification email
+    await emailjs.send(AI_CONFIG.emailjs.serviceId, AI_CONFIG.emailjs.templateId, {
+      to_name: 'SunEdge Power Team',
+      from_name: `${formData.firstName} ${formData.lastName}`,
+      from_email: formData.email,
+      company: formData.company,
+      phone: formData.phone || 'Not provided',
+      message: formData.projectDetails,
+    });
+
+    // Send auto-response if enabled
+    if (AI_CONFIG.enableChat) {
+      await sendAutoResponse(formData);
+    }
+  } catch (error) {
+    console.error('Failed to send email:', error);
+    throw error;
+  }
+};

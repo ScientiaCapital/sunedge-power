@@ -29,6 +29,12 @@ const ChatBot = () => {
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Debug logging
+  useEffect(() => {
+    console.log('ChatBot mounted. AI_CONFIG.enableChat:', AI_CONFIG.enableChat);
+    console.log('AI_CONFIG.geminiKey exists:', !!AI_CONFIG.geminiKey);
+  }, []);
+
   useEffect(() => {
     if (scrollAreaRef.current) {
       scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight;
