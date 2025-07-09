@@ -1,31 +1,63 @@
-import React from 'react';
+import { Zap, Building, MapPin, Award, Wrench, Users } from 'lucide-react';
 
-const stats = [
-  { label: 'MW Installed', value: '500+' },
-  { label: 'States Served', value: '50' },
-  { label: 'Commercial Projects', value: '1,200+' },
-  { label: 'Years Experience', value: '18' },
-];
+const StatsSection = () => {
+  const stats = [
+    {
+      icon: <Zap className="h-8 w-8" />,
+      value: '500MW+',
+      label: 'Solar Installed',
+      description: 'Powering businesses nationwide',
+    },
+    {
+      icon: <Building className="h-8 w-8" />,
+      value: '1,000+',
+      label: 'Commercial Projects',
+      description: 'From 100kW to multi-MW systems',
+    },
+    {
+      icon: <MapPin className="h-8 w-8" />,
+      value: '12 States',
+      label: 'Nationwide Coverage',
+      description: 'Licensed across America',
+    },
+    {
+      icon: <Award className="h-8 w-8" />,
+      value: '18+ Years',
+      label: 'Industry Experience',
+      description: 'Trusted since 2006',
+    },
+  ];
 
-const StatsSection = () => (
-  <section className="py-16 bg-background">
-    <div className="container mx-auto flex flex-col items-center">
-      <h2 className="text-2xl md:text-4xl font-bold text-primary text-center mb-8 animate-fade-in">
-        Proven Commercial Solar Experience
-      </h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 w-full max-w-4xl">
-        {stats.map((stat) => (
-          <div
-            key={stat.label}
-            className="flex flex-col items-center bg-secondary rounded-lg shadow p-6 animate-fade-in"
-          >
-            <span className="text-3xl md:text-5xl font-bold text-accent mb-2">{stat.value}</span>
-            <span className="text-primary/70 text-lg">{stat.label}</span>
-          </div>
-        ))}
+  return (
+    <section className="relative py-20 bg-gradient-stats overflow-hidden">
+      <div className="absolute inset-0 bg-black/10"></div>
+
+      <div className="relative z-10 container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {stats.map((stat, index) => (
+            <div
+              key={index}
+              className="text-center text-white transform hover:scale-105 transition-transform duration-300"
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full mb-4 border border-white/30">
+                {stat.icon}
+              </div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">{stat.value}</div>
+              <div className="text-xl font-semibold mb-2">{stat.label}</div>
+              <div className="text-white/80 text-sm">{stat.description}</div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-10 right-10 w-20 h-20 border border-white/20 rounded-full"></div>
+        <div className="absolute bottom-10 left-10 w-16 h-16 border border-white/20 rounded-full"></div>
+        <div className="absolute top-1/2 left-1/4 w-12 h-12 border border-white/20 rounded-full"></div>
+      </div>
+    </section>
+  );
+};
 
 export default StatsSection;
