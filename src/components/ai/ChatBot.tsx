@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { chatWithAI } from '@/lib/ai-services';
 import { AI_CONFIG } from '@/lib/ai-config';
+import axios from 'axios';
 
 interface Message {
   id: string;
@@ -28,6 +29,8 @@ const ChatBot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const addressRegex = /\d+\s+\w+.*(street|st\.?|avenue|ave\.?|road|rd\.?|drive|dr\.?|lane|ln\.?|blvd|boulevard|court|ct\.?|parkway|pkwy|circle|cir\.?)/i;
 
   // Debug logging
   useEffect(() => {
@@ -62,29 +65,30 @@ const ChatBot = () => {
     setIsLoading(true);
 
     try {
-      // Add context about SunEdge Power
-      const context = `You are Sunny, a helpful solar energy assistant for SunEdge Power. 
-        SunEdge Power specializes in commercial solar installations nationwide, including:
-        - Solar farms and ground mount systems
-        - Commercial & industrial solar (100kW to MW+ systems)
-        - Multi-family and apartment complexes
-        - Amusement parks and large venues
-        We have 18+ years of experience and operate in 12 states.
-        
-        Instructions:
-        - If a user asks about residential solar, say: 'While SunEdge Power specializes in commercial solar, we may be able to help or refer you to a trusted residential installer in your area. Please share your location and project details, and we’ll do our best to assist or connect you with the right expert.'
-        `;
-
-      const response = await chatWithAI(input, context);
-
-      const botMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        text: response,
-        sender: 'bot',
-        timestamp: new Date(),
-      };
-
-      setMessages((prev) => [...prev, botMessage]);
+      if (addressRegex.test(input)) {
+        // Address detected, call proposal API
+        const res = await axios.post('/api/proposal', { address: input });
+        const proposal = res.data;
+        const summary = `Here's your custom solar proposal:\n- Address: ${proposal.address}\n- Location: (${proposal.lat}, ${proposal.lng})\n- Utility Rates: ${proposal.utilityRates ? JSON.stringify(proposal.utilityRates) : 'N/A'}`;
+        const botMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          text: summary,
+          sender: 'bot',
+          timestamp: new Date(),
+        };
+        setMessages((prev) => [...prev, botMessage]);
+      } else {
+        // Normal AI chat flow
+        const context = `You are Sunny, a helpful solar energy assistant for SunEdge Power. \nSunEdge Power specializes in commercial solar installations nationwide, including:\n- Solar farms and ground mount systems\n- Commercial & industrial solar (100kW to MW+ systems)\n- Multi-family and apartment complexes\n- Amusement parks and large venues\nWe have 18+ years of experience and operate in 12 states.\n\nInstructions:\n- If a user asks about residential solar, say: 'While SunEdge Power specializes in commercial solar, we may be able to help or refer you to a trusted residential installer in your area. Please share your location and project details, and we’ll do our best to assist or connect you with the right expert.'\n`;
+        const response = await chatWithAI(input, context);
+        const botMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          text: response,
+          sender: 'bot',
+          timestamp: new Date(),
+        };
+        setMessages((prev) => [...prev, botMessage]);
+      }
     } catch (error) {
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
