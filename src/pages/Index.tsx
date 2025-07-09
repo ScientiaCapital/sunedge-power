@@ -1,10 +1,12 @@
-import Navigation from "@/components/ui/navigation";
-import HeroSection from "@/components/ui/hero-section";
-import StatsSection from "@/components/ui/stats-section";
-import AboutSection from "@/components/ui/about-section";
-import ServicesSection from "@/components/ui/services-section";
-import ContactSection from "@/components/ui/contact-section";
-import Footer from "@/components/ui/footer";
+import Navigation from '@/components/ui/navigation';
+import HeroSection from '@/components/ui/hero-section';
+import StatsSection from '@/components/ui/stats-section';
+import AboutSection from '@/components/ui/about-section';
+import ServicesSection from '@/components/ui/services-section';
+import ContactSection from '@/components/ui/contact-section';
+import Footer from '@/components/ui/footer';
+import PortfolioSection from '@/components/ui/portfolio-section';
+import WhySolarSection from '@/components/ui/why-solar-section';
 
 const Index = () => {
   return (
