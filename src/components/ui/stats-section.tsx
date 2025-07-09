@@ -1,30 +1,30 @@
-import { Zap, Building, MapPin, Award, Wrench, Users } from 'lucide-react';
+import { ShieldCheck, Repeat, HardHat, Wrench } from 'lucide-react';
 
 const StatsSection = () => {
   const stats = [
     {
-      icon: <Zap className="h-8 w-8" />,
-      value: '500MW+',
-      label: 'Solar Installed',
-      description: 'Powering businesses nationwide',
+      icon: <ShieldCheck className="h-8 w-8" />, // Warranty Coverage
+      value: 'Up to 25 Years',
+      label: 'Warranty Coverage',
+      description: 'Performance & equipment warranties on all systems',
     },
     {
-      icon: <Building className="h-8 w-8" />,
-      value: '1,000+',
-      label: 'Commercial Projects',
-      description: 'From 100kW to multi-MW systems',
+      icon: <Repeat className="h-8 w-8" />, // Repeat Clients
+      value: '60%+',
+      label: 'Repeat Clients',
+      description: 'Commercial clients return for additional projects',
     },
     {
-      icon: <MapPin className="h-8 w-8" />,
-      value: '12 States',
-      label: 'Nationwide Coverage',
-      description: 'Licensed across America',
+      icon: <HardHat className="h-8 w-8" />, // Safety Record
+      value: '0',
+      label: 'Lost-Time Incidents',
+      description: 'Zero lost-time safety incidents in the past 5 years',
     },
     {
-      icon: <Award className="h-8 w-8" />,
-      value: '18+ Years',
-      label: 'Industry Experience',
-      description: 'Trusted since 2006',
+      icon: <Wrench className="h-8 w-8" />, // Custom Engineering
+      value: '100%',
+      label: 'Custom Engineering',
+      description: 'Every system tailored for site & business needs',
     },
   ];
 

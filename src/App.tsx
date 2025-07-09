@@ -7,7 +7,7 @@ import { AnimatePresence } from 'framer-motion';
 import { Suspense, lazy } from 'react';
 import LoadingScreen from '@/components/ui/loading-screen';
 import FloatingContact from '@/components/ui/floating-contact';
-import ChatBot from '@/components/ai/ChatBot';
+// ChatBot now integrated with Sunny mascot
 import ErrorBoundary from '@/components/error-boundary';
 import '@fontsource-variable/inter';
 
@@ -42,7 +42,6 @@ const App = () => {
               </Routes>
             </Suspense>
             <FloatingContact />
-            <ChatBot />
           </BrowserRouter>
         </TooltipProvider>
       </QueryClientProvider>

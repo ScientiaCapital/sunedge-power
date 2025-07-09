@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Zap, ChevronDown } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import { SunnyMascot } from '@/components/ai/SunnyChatIntegration';
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -154,33 +155,14 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Mascot Integration */}
+          {/* Sunny Mascot with Chat Integration */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.9, type: 'spring', stiffness: 200 }}
             className="mt-12 flex justify-center"
           >
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-              className="relative"
-            >
-              <motion.img
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                src="/lovable-uploads/33804a65-aead-4a38-bfd0-69852f8761a7.png"
-                alt="Sunny - SunEdge Power Mascot"
-                className="h-32 w-auto drop-shadow-2xl cursor-pointer"
-              />
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.2, type: 'spring', stiffness: 300 }}
-                className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 border border-white/20"
-              >
-                <span className="text-sm font-medium text-white">Meet Sunny!</span>
-              </motion.div>
-            </motion.div>
+            <SunnyMascot />
           </motion.div>
         </div>
 

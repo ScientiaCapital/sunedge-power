@@ -68,8 +68,11 @@ export const chatWithAI = async (message: string, context?: string): Promise<str
             },
           ],
           generationConfig: {
-            maxOutputTokens: 1000,
+            maxOutputTokens: 150,
             temperature: 0.7,
+            candidateCount: 1,
+            topK: 10,
+            topP: 0.8,
           },
         }),
       });
