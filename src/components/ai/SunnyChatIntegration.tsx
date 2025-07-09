@@ -1,11 +1,23 @@
 import { useState, useRef, useEffect } from 'react';
-import { Send, Bot, User, Loader2, X, MessageSquare } from 'lucide-react';
+import {
+  Send,
+  Bot,
+  User,
+  Loader2,
+  X,
+  MessageSquare,
+  Sparkles,
+  Mic,
+  MicOff,
+  Volume2,
+} from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { chatWithAI } from '@/lib/ai-services';
 import { AI_CONFIG } from '@/lib/ai-config';
+import { enhanceResponse, calculateQuickROI } from '@/lib/solar-knowledge-base';
 
 interface Message {
   id: string;
@@ -23,27 +35,139 @@ export const SunnyChatIntegration = ({ isOpen, onClose }: SunnyChatIntegrationPr
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "Hey! I'm Sunny! ☀️ Ask me about commercial solar savings or get a quick quote!",
+      text: "Good to meet you! I'm Sunny from SunEdge Power. ☀️ With 18 years in commercial solar, I'm here to help you save money and go green. What's your facility type and location?",
       sender: 'bot',
       timestamp: new Date(),
     },
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isListening, setIsListening] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [speechSupported, setSpeechSupported] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const recognitionRef = useRef<SpeechRecognition | null>(null);
+  const speechSynthesisRef = useRef<SpeechSynthesisUtterance | null>(null);
 
-  useEffect(() => {
-    if (scrollAreaRef.current) {
-      scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight;
+  // Smooth scroll to bottom function
+  const scrollToBottom = () => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
-  }, [messages]);
+  };
 
   useEffect(() => {
-    if (isOpen && inputRef.current) {
-      inputRef.current.focus();
+    // Auto-scroll to bottom when new messages arrive or loading state changes
+    scrollToBottom();
+  }, [messages, isLoading]);
+
+  useEffect(() => {
+    if (isOpen) {
+      // Focus input
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+      // Scroll to bottom when chat opens
+      setTimeout(() => {
+        scrollToBottom();
+      }, 300);
     }
   }, [isOpen]);
+
+  // Initialize speech recognition and synthesis
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Speech Recognition
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const SpeechRecognition = window.SpeechRecognition || (window as any).webkitSpeechRecognition;
+      if (SpeechRecognition) {
+        setSpeechSupported(true);
+        const recognition = new SpeechRecognition();
+        recognition.continuous = false;
+        recognition.interimResults = true;
+        recognition.lang = 'en-US';
+
+        recognition.onstart = () => {
+          setIsListening(true);
+        };
+
+        recognition.onresult = (event: SpeechRecognitionEvent) => {
+          const current = event.resultIndex;
+          const transcript = event.results[current][0].transcript;
+          setInput(transcript);
+
+          if (event.results[current].isFinal) {
+            setIsListening(false);
+          }
+        };
+
+        recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
+          console.error('Speech recognition error:', event.error);
+          setIsListening(false);
+        };
+
+        recognition.onend = () => {
+          setIsListening(false);
+        };
+
+        recognitionRef.current = recognition;
+      }
+
+      // Speech Synthesis - Sunny's voice
+      if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance();
+        utterance.rate = 0.9; // Slightly slower for clarity and authority
+        utterance.pitch = 0.8; // Lower pitch for masculine voice
+        utterance.volume = 1.0;
+
+        // Find a suitable male voice
+        const setVoice = () => {
+          const voices = window.speechSynthesis.getVoices();
+          // Look for American English male voices
+          const maleVoices = voices.filter(
+            (voice) =>
+              voice.lang.includes('en-US') &&
+              (voice.name.toLowerCase().includes('male') ||
+                voice.name.includes('David') ||
+                voice.name.includes('Mark') ||
+                voice.name.includes('Daniel') ||
+                voice.name.includes('James')),
+          );
+
+          if (maleVoices.length > 0) {
+            utterance.voice = maleVoices[0];
+          } else {
+            // Fallback to any US English voice
+            const usVoice = voices.find((voice) => voice.lang === 'en-US');
+            if (usVoice) utterance.voice = usVoice;
+          }
+        };
+
+        // Chrome loads voices asynchronously
+        if (window.speechSynthesis.getVoices().length > 0) {
+          setVoice();
+        } else {
+          window.speechSynthesis.onvoiceschanged = setVoice;
+        }
+
+        utterance.onstart = () => setIsSpeaking(true);
+        utterance.onend = () => setIsSpeaking(false);
+
+        speechSynthesisRef.current = utterance;
+      }
+    }
+
+    return () => {
+      if (recognitionRef.current) {
+        recognitionRef.current.stop();
+      }
+      if (window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
@@ -60,11 +184,23 @@ export const SunnyChatIntegration = ({ isOpen, onClose }: SunnyChatIntegrationPr
     setIsLoading(true);
 
     try {
-      const context = `You are Sunny, the friendly solar energy mascot for SunEdge Power. Keep responses VERY CONCISE - aim for 1-3 sentences max.
-        SunEdge Power: Commercial solar only (100kW to MW+), 18+ years experience, 12 states.
-        Specialties: Solar farms, C&I, apartments, large venues.
-        Be friendly, use emojis sparingly. Get to the point quickly.
-        For quotes: Ask location, facility size, energy usage.`;
+      // Get enhanced context based on the query
+      const enhancedContext = enhanceResponse(input);
+
+      const context = `You are Sunny, the commercial solar expert mascot for SunEdge Power. Keep responses CONCISE (2-3 sentences) but informative.
+        
+        ${enhancedContext}
+        
+        Instructions:
+        - Focus on commercial, industrial, and utility-scale solar (100kW to 100MW+)
+        - Provide specific numbers and calculations when relevant
+        - If asked about costs/ROI, use the data provided to give real estimates
+        - Be enthusiastic but professional
+        - Use ☀️ emoji occasionally but not excessively
+        - For quotes: Get location, facility type, monthly electric bill or usage
+        - Mention relevant incentives (30% ITC, depreciation, etc.)
+        
+        Current query: ${input}`;
 
       const response = await chatWithAI(input, context);
 
@@ -76,6 +212,9 @@ export const SunnyChatIntegration = ({ isOpen, onClose }: SunnyChatIntegrationPr
       };
 
       setMessages((prev) => [...prev, botMessage]);
+
+      // Speak the response
+      speakMessage(response);
     } catch (error) {
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -89,32 +228,87 @@ export const SunnyChatIntegration = ({ isOpen, onClose }: SunnyChatIntegrationPr
     }
   };
 
+  const toggleVoiceInput = () => {
+    if (!recognitionRef.current) return;
+
+    if (isListening) {
+      recognitionRef.current.stop();
+      setIsListening(false);
+    } else {
+      try {
+        recognitionRef.current.start();
+        setIsListening(true);
+      } catch (error) {
+        console.error('Failed to start speech recognition:', error);
+        // If already started, restart
+        recognitionRef.current.stop();
+        setTimeout(() => {
+          recognitionRef.current.start();
+        }, 100);
+      }
+    }
+  };
+
+  const speakMessage = (text: string) => {
+    if (!speechSynthesisRef.current || !window.speechSynthesis) return;
+
+    // Cancel any ongoing speech
+    window.speechSynthesis.cancel();
+
+    // Update the text with Sunny's personality
+    speechSynthesisRef.current.text = text;
+
+    // Speak with Sunny's voice
+    window.speechSynthesis.speak(speechSynthesisRef.current);
+  };
+
   if (!AI_CONFIG.enableChat) return null;
 
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.8, y: 20 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+          initial={{ opacity: 0, scale: 0.8, y: 20, rotateX: -20 }}
+          animate={{ opacity: 1, scale: 1, y: 0, rotateX: 0 }}
+          exit={{ opacity: 0, scale: 0.8, y: 20, rotateX: -20 }}
+          transition={{ type: 'spring', stiffness: 260, damping: 20 }}
           className="fixed inset-x-4 top-[20%] mx-auto max-w-lg z-50 md:inset-x-auto md:right-8 md:left-auto"
+          style={{ transformStyle: 'preserve-3d', perspective: 1000 }}
         >
           <div className="bg-gray-900 rounded-3xl shadow-2xl overflow-hidden border border-solar-500/30">
             {/* Header with Sunny */}
             <div className="bg-gradient-to-r from-solar-600 to-solar-500 p-4 flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <motion.img
-                  animate={{ rotate: [0, -5, 5, -5, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                  src="/lovable-uploads/33804a65-aead-4a38-bfd0-69852f8761a7.png"
-                  alt="Sunny"
-                  className="h-12 w-auto"
-                />
+                <div className="relative">
+                  <motion.img
+                    animate={{ rotate: [0, -5, 5, -5, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                    src="/lovable-uploads/33804a65-aead-4a38-bfd0-69852f8761a7.png"
+                    alt="Sunny"
+                    className="h-12 w-auto"
+                  />
+                  <AnimatePresence>
+                    {isSpeaking && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0 }}
+                        className="absolute -bottom-1 -right-1 bg-green-500 rounded-full p-1"
+                      >
+                        <Volume2 className="h-3 w-3 text-white" />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
                 <div>
                   <h3 className="text-white font-semibold text-lg">Chat with Sunny!</h3>
-                  <p className="text-solar-100 text-sm">Your Solar Energy Expert</p>
+                  <p className="text-solar-100 text-sm">
+                    {isSpeaking
+                      ? 'Speaking...'
+                      : isListening
+                        ? 'Listening...'
+                        : 'Your Solar Energy Expert'}
+                  </p>
                 </div>
               </div>
               <Button
@@ -180,23 +374,30 @@ export const SunnyChatIntegration = ({ isOpen, onClose }: SunnyChatIntegrationPr
                     </div>
                   </motion.div>
                 )}
+                {/* Invisible div to maintain scroll position */}
+                <div ref={messagesEndRef} className="h-2" />
               </div>
             </ScrollArea>
 
             {/* Quick Actions */}
             <div className="px-4 py-2 border-t border-gray-800">
               <div className="flex flex-wrap gap-2">
-                {['Get a Solar Quote', 'How much can I save?', 'Solar for my business'].map(
-                  (action) => (
-                    <button
-                      key={action}
-                      onClick={() => setInput(action)}
-                      className="text-xs bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded-full transition-colors"
-                    >
-                      {action}
-                    </button>
-                  ),
-                )}
+                {[
+                  '💰 ROI for 500kW system?',
+                  '🏭 Manufacturing facility solar',
+                  '🔋 Battery storage options',
+                  '📊 Calculate my savings',
+                ].map((action) => (
+                  <motion.button
+                    key={action}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setInput(action.replace(/^[^\s]+ /, ''))}
+                    className="text-xs bg-gray-800 hover:bg-solar-600/20 text-gray-300 hover:text-solar-400 px-3 py-1 rounded-full transition-all duration-200 border border-gray-700 hover:border-solar-500/50"
+                  >
+                    {action}
+                  </motion.button>
+                ))}
               </div>
             </div>
 
@@ -213,10 +414,24 @@ export const SunnyChatIntegration = ({ isOpen, onClose }: SunnyChatIntegrationPr
                   ref={inputRef}
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask Sunny about solar energy..."
+                  placeholder={isListening ? 'Listening...' : 'Ask Sunny about solar energy...'}
                   className="flex-1 bg-gray-800 border-gray-700 text-white placeholder:text-gray-500"
-                  disabled={isLoading}
+                  disabled={isLoading || isListening}
                 />
+                {speechSupported && (
+                  <Button
+                    type="button"
+                    size="icon"
+                    onClick={toggleVoiceInput}
+                    className={`${
+                      isListening
+                        ? 'bg-red-500 hover:bg-red-600 animate-pulse'
+                        : 'bg-gray-700 hover:bg-gray-600'
+                    }`}
+                  >
+                    {isListening ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
+                  </Button>
+                )}
                 <Button
                   type="submit"
                   size="icon"
@@ -238,6 +453,7 @@ export const SunnyChatIntegration = ({ isOpen, onClose }: SunnyChatIntegrationPr
 export const SunnyMascot = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     // Show tooltip after 3 seconds
@@ -256,7 +472,13 @@ export const SunnyMascot = () => {
     };
   }, []);
 
+  const handleMascotClick = () => {
+    setIsChatOpen(true);
+    setShowTooltip(false);
+  };
+
   if (!AI_CONFIG.enableChat) {
+    console.log('Chat is disabled in AI_CONFIG');
     // If chat is disabled, just show the mascot without interaction
     return (
       <motion.div
@@ -279,13 +501,53 @@ export const SunnyMascot = () => {
         animate={{ y: [0, -10, 0] }}
         transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
         className="relative"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
+        {/* Glow effect when hovered */}
+        <AnimatePresence>
+          {isHovered && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1.2 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              className="absolute inset-0 bg-solar-400/30 rounded-full blur-xl"
+            />
+          )}
+        </AnimatePresence>
+
+        {/* Sparkle effects */}
+        <AnimatePresence>
+          {isHovered && (
+            <>
+              {[...Array(3)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{
+                    opacity: [0, 1, 0],
+                    scale: [0, 1, 0],
+                    x: [0, (i - 1) * 30],
+                    y: [0, -20 - i * 10],
+                  }}
+                  transition={{ duration: 1, delay: i * 0.2 }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                >
+                  <Sparkles className="h-4 w-4 text-solar-400" />
+                </motion.div>
+              ))}
+            </>
+          )}
+        </AnimatePresence>
+
         <motion.img
-          whileHover={{ scale: 1.1, rotate: 5 }}
-          onClick={() => setIsChatOpen(true)}
+          whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
+          whileTap={{ scale: 0.95 }}
+          onClick={handleMascotClick}
           src="/lovable-uploads/33804a65-aead-4a38-bfd0-69852f8761a7.png"
           alt="Sunny - Click to chat!"
-          className="h-32 w-auto drop-shadow-2xl cursor-pointer"
+          className="h-32 w-auto drop-shadow-2xl cursor-pointer relative z-10"
+          transition={{ type: 'spring', stiffness: 300, damping: 15 }}
         />
 
         {/* Animated chat bubble tooltip */}

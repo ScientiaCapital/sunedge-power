@@ -128,29 +128,23 @@ const HeroSection = () => {
             America. Specializing in commercial, industrial, and utility-scale solar installations.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex justify-center"
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 size="lg"
                 className="text-lg px-8 py-6 rounded-full bg-solar-500 hover:bg-solar-600 text-white shadow-tesla tesla-hover"
+                onClick={() =>
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                }
               >
-                Start Your Commercial Project
+                Start Your Project
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-8 py-6 rounded-full border-white/20 text-white hover:bg-white/10 backdrop-blur-md tesla-hover"
-              >
-                View Project Portfolio
               </Button>
             </motion.div>
           </motion.div>

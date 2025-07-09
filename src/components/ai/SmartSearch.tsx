@@ -45,10 +45,10 @@ const SITE_CONTENT = [
     keywords: ['incentive', 'tax', 'credit', 'itc', 'rebate', 'savings'],
   },
   {
-    title: 'Project Portfolio',
-    description: 'View our completed commercial solar installations',
-    url: '#portfolio',
-    keywords: ['portfolio', 'projects', 'examples', 'case study', 'completed'],
+    title: 'Our Experience',
+    description: '18+ years of solar installation expertise nationwide',
+    url: '#about',
+    keywords: ['experience', 'expertise', 'years', 'nationwide', 'proven'],
   },
   {
     title: 'Solar ROI Calculator',
