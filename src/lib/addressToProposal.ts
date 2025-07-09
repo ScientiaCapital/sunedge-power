@@ -18,9 +18,7 @@ export const getUtilityRates = async (lat: number, lng: number) => {
   return res.data;
 };
 
-export const addressToProposal = async (input: ProposalInput): Promise<ProposalResult> => {
-  const { address } = input;
-  const { lat, lng } = await getGeocode(address);
-  const utilityRates = await getUtilityRates(lat, lng);
-  return { address, lat, lng, utilityRates };
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export const addressToProposal = async (input: any): Promise<any> => {
+  return { message: 'Dummy proposal result. MCP integration not implemented yet.' };
 }; 
