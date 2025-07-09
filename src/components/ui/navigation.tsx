@@ -1,18 +1,18 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Menu, X } from 'lucide-react';
+
+const navItems = [
+  { label: 'Home', href: '#home' },
+  { label: 'About', href: '#about' },
+  { label: 'Services', href: '#services' },
+  { label: 'Our Team', href: '#team' },
+  { label: 'Equipment', href: '#equipment' },
+  { label: 'Contact', href: '#contact' },
+];
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const navItems = [
-    { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Our Team", href: "#team" },
-    { label: "Equipment", href: "#equipment" },
-    { label: "Contact", href: "#contact" },
-  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">

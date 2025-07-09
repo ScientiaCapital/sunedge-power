@@ -79,8 +79,9 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Inter var', 'system-ui', 'sans-serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        body: ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        display: ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-hero': 'var(--gradient-hero)',

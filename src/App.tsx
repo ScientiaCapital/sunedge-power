@@ -7,8 +7,10 @@ import { AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import Index from './pages/Index';
 import NotFound from './pages/NotFound';
+import Team from './pages/Team';
 import LoadingScreen from '@/components/ui/loading-screen';
 import FloatingContact from '@/components/ui/floating-contact';
+import ChatBot from '@/components/ai/ChatBot';
 import '@fontsource-variable/inter';
 
 const queryClient = new QueryClient();
@@ -37,10 +39,12 @@ const App = () => {
             <BrowserRouter key="app">
               <Routes>
                 <Route path="/" element={<Index />} />
+                <Route path="/team" element={<Team />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
               <FloatingContact />
+              <ChatBot />
             </BrowserRouter>
           )}
         </AnimatePresence>

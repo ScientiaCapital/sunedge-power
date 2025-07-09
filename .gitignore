@@ -23,3 +23,62 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# Environment variables and secrets
+.env
+.env.*
+.env.local
+.env.*.local
+# Ignore Vercel/Netlify/other env files
+.vercel
+.netlify
+.env.production
+.env.development
+
+# API Keys and Credentials
+**/api-keys.json
+**/credentials.json
+**/secrets.json
+**/config.secret.js
+**/config.secret.ts
+
+# Private keys and certificates
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# OAuth and authentication files
+**/auth.json
+**/oauth-tokens.json
+
+# Database files
+*.sqlite
+*.sqlite3
+*.db
+
+# Backup files
+*.backup
+*.bak
+
+# Cache directories
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.vuepress/dist
+.serverless/
+.fusebox/
+.dynamodb/
+
+# AI/ML model files (if stored locally)
+*.h5
+*.pkl
+*.model
+*.weights
+
+# Temporary files
+*.tmp
+*.temp
+~*
