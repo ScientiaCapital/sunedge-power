@@ -24,7 +24,7 @@ const SITE_CONTENT = [
     title: 'Multi-Family Solar',
     description: 'Specialized solar solutions for apartment complexes and multi-family properties',
     url: '#services',
-    keywords: ['apartment', 'multi-family', 'complex', 'residential', 'property'],
+    keywords: ['apartment', 'multi-family', 'complex', 'property', 'units'],
   },
   {
     title: 'Get a Free Quote',

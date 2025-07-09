@@ -295,7 +295,7 @@ const Chatbot: React.FC = () => {
       setMessages((msgs) => [
         ...msgs,
         { from: 'user', text: value },
-        { from: 'sunny', text: 'What is your roof size (in sq ft or m²)?' },
+        { from: 'sunny', text: 'What is your facility size (in sq ft or m²)?' },
       ]);
     } else if (estimateStep === 'roof') {
       setEstimateData((d) => ({ ...d, roof: value }));
@@ -322,7 +322,7 @@ const Chatbot: React.FC = () => {
             content: msg.text,
           })),
           { role: 'user', content: `Location: ${estimateData.location}` },
-          { role: 'user', content: `Roof size: ${estimateData.roof}` },
+          { role: 'user', content: `Facility size: ${estimateData.roof}` },
           { role: 'user', content: `Energy usage: ${value}` },
         ];
         const res = await fetch('/api/chatbot', {
@@ -457,7 +457,7 @@ const Chatbot: React.FC = () => {
                   estimateStep === 'location'
                     ? 'Enter your project location...'
                     : estimateStep === 'roof'
-                      ? 'Enter your roof size...'
+                      ? 'Enter your facility size...'
                       : 'Enter your energy usage...'
                 }
                 onKeyDown={(e) => {

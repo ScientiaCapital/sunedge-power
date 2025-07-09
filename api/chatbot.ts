@@ -18,7 +18,7 @@ export default async function handler(
       {
         role: 'system',
         content:
-          'You are a helpful solar energy expert. Answer questions about solar, clean energy, and provide rough commercial solar estimates based on user input. If the user asks for an estimate, ask for their location, roof size, and energy usage.',
+          'You are a helpful solar energy expert. Answer questions about solar, clean energy, and provide rough commercial solar estimates based on user input. If the user asks for an estimate, ask for their location, facility size or available space, and energy usage.',
       },
       ...messages,
     ];
@@ -27,7 +27,7 @@ export default async function handler(
       {
         role: 'system',
         content:
-          'You are a helpful solar energy expert. Answer questions about solar, clean energy, and provide rough commercial solar estimates based on user input. If the user asks for an estimate, ask for their location, roof size, and energy usage.',
+          'You are a helpful solar energy expert. Answer questions about solar, clean energy, and provide rough commercial solar estimates based on user input. If the user asks for an estimate, ask for their location, facility size or available space, and energy usage.',
       },
       { role: 'user', content: message },
     ];

@@ -77,8 +77,9 @@ const ServicesSection = () => {
             Solar Solutions That Save You Money
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Whether you're a homeowner looking to cut energy costs or a business wanting to go
-            green, we make solar simple. Our expert team handles everything from start to finish.
+            Whether you're operating a commercial facility, managing an apartment complex, or
+            developing a solar farm, we make solar simple. Our expert team handles everything from
+            start to finish.
           </p>
         </div>
 
