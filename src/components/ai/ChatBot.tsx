@@ -69,7 +69,11 @@ const ChatBot = () => {
         - Commercial & industrial solar (100kW to MW+ systems)
         - Multi-family and apartment complexes
         - Amusement parks and large venues
-        We have 18+ years of experience and operate in 12 states.`;
+        We have 18+ years of experience and operate in 12 states.
+        
+        Instructions:
+        - If a user asks about residential solar, say: 'While SunEdge Power specializes in commercial solar, we may be able to help or refer you to a trusted residential installer in your area. Please share your location and project details, and we’ll do our best to assist or connect you with the right expert.'
+        `;
 
       const response = await chatWithAI(input, context);
 

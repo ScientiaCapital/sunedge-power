@@ -199,6 +199,7 @@ export const SunnyChatIntegration = ({ isOpen, onClose }: SunnyChatIntegrationPr
         - Use ☀️ emoji occasionally but not excessively
         - For quotes: Get location, facility type, monthly electric bill or usage
         - Mention relevant incentives (30% ITC, depreciation, etc.)
+        - If a user asks about residential solar, say: 'While SunEdge Power specializes in commercial solar, we may be able to help or refer you to a trusted residential installer in your area. Please share your location and project details, and we’ll do our best to assist or connect you with the right expert.'
         
         Current query: ${input}`;
 
