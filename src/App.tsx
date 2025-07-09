@@ -4,52 +4,49 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
-import Index from './pages/Index';
-import NotFound from './pages/NotFound';
-import Team from './pages/Team';
+import { Suspense, lazy } from 'react';
 import LoadingScreen from '@/components/ui/loading-screen';
 import FloatingContact from '@/components/ui/floating-contact';
 import ChatBot from '@/components/ai/ChatBot';
+import ErrorBoundary from '@/components/error-boundary';
 import '@fontsource-variable/inter';
 
-const queryClient = new QueryClient();
+// Lazy load pages for better performance
+const Index = lazy(() => import('./pages/Index'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+const Team = lazy(() => import('./pages/Team'));
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5 minutes
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <AnimatePresence mode="wait">
-          {isLoading ? (
-            <LoadingScreen key="loading" />
-          ) : (
-            <BrowserRouter key="app">
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Suspense fallback={<LoadingScreen />}>
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/team" element={<Team />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
-              <FloatingContact />
-              <ChatBot />
-            </BrowserRouter>
-          )}
-        </AnimatePresence>
-      </TooltipProvider>
-    </QueryClientProvider>
+            </Suspense>
+            <FloatingContact />
+            <ChatBot />
+          </BrowserRouter>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 };
 

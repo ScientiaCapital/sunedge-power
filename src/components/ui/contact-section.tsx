@@ -1,8 +1,6 @@
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Mail, Phone, MapPin, MessageSquare } from 'lucide-react';
+import ContactForm from '@/components/ui/contact-form';
 
 const ContactSection = () => {
   const contactInfo = [
@@ -86,79 +84,8 @@ const ContactSection = () => {
                 Start Your Commercial Solar Project
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-white/90 text-sm font-medium mb-2">
-                    First Name *
-                  </label>
-                  <Input
-                    placeholder="John"
-                    className="bg-white/20 border-white/30 text-white placeholder:text-white/50"
-                  />
-                </div>
-                <div>
-                  <label className="block text-white/90 text-sm font-medium mb-2">
-                    Last Name *
-                  </label>
-                  <Input
-                    placeholder="Doe"
-                    className="bg-white/20 border-white/30 text-white placeholder:text-white/50"
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-white/90 text-sm font-medium mb-2">Email *</label>
-                  <Input
-                    type="email"
-                    placeholder="john@company.com"
-                    className="bg-white/20 border-white/30 text-white placeholder:text-white/50"
-                  />
-                </div>
-                <div>
-                  <label className="block text-white/90 text-sm font-medium mb-2">Phone</label>
-                  <Input
-                    type="tel"
-                    placeholder="(555) 123-4567"
-                    className="bg-white/20 border-white/30 text-white placeholder:text-white/50"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-white/90 text-sm font-medium mb-2">
-                  Company/Organization *
-                </label>
-                <Input
-                  placeholder="Your Company Name"
-                  className="bg-white/20 border-white/30 text-white placeholder:text-white/50"
-                />
-              </div>
-
-              <div>
-                <label className="block text-white/90 text-sm font-medium mb-2">
-                  Project Details *
-                </label>
-                <Textarea
-                  placeholder="Tell us about your project: type (apartment, commercial, solar farm), location, estimated size (kW/MW), and timeline..."
-                  rows={4}
-                  className="bg-white/20 border-white/30 text-white placeholder:text-white/50 resize-none"
-                />
-              </div>
-
-              <Button
-                size="lg"
-                variant="secondary"
-                className="w-full text-lg py-4 rounded-full shadow-glow hover:shadow-xl transition-all duration-300"
-              >
-                Get Project Quote
-              </Button>
-
-              <p className="text-white/60 text-sm text-center">
-                * Required fields. We'll respond within 24 hours.
-              </p>
+            <CardContent>
+              <ContactForm />
             </CardContent>
           </Card>
         </div>

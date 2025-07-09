@@ -1,0 +1,197 @@
+/* Accessibility improvements for WCAG AA compliance */
+
+:root {
+  /* High contrast color palette */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #e5e5e5;
+  --color-text-muted: #a3a3a3;
+  
+  /* Ensure minimum contrast ratios */
+  --color-bg-input: rgba(255, 255, 255, 0.15); /* Increased from 0.1 */
+  --color-bg-input-hover: rgba(255, 255, 255, 0.2);
+  --color-bg-input-focus: rgba(255, 255, 255, 0.25);
+  
+  --color-border-input: rgba(255, 255, 255, 0.3); /* Increased from 0.2 */
+  --color-border-input-focus: rgba(255, 255, 255, 0.5);
+  
+  /* Focus indicators */
+  --focus-ring-color: #fbbf24; /* Solar yellow */
+  --focus-ring-offset: 2px;
+  --focus-ring-width: 3px;
+}
+
+/* Global focus styles */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: 4px;
+}
+
+/* Skip to main content link */
+.skip-to-main {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 1rem 2rem;
+  background-color: var(--color-solar-500);
+  color: white;
+  text-decoration: none;
+  border-radius: 0 0 8px 0;
+}
+
+.skip-to-main:focus {
+  left: 0;
+  top: 0;
+}
+
+/* Improved form input contrast */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+  background-color: var(--color-bg-input) !important;
+  border-color: var(--color-border-input) !important;
+  color: var(--color-text-primary) !important;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="tel"]:hover,
+textarea:hover,
+select:hover {
+  background-color: var(--color-bg-input-hover) !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+  background-color: var(--color-bg-input-focus) !important;
+  border-color: var(--color-border-input-focus) !important;
+}
+
+/* Placeholder text contrast */
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-muted) !important;
+  opacity: 0.8;
+}
+
+/* Error text contrast */
+.text-red-400 {
+  color: #f87171 !important; /* Lighter red for better contrast on dark backgrounds */
+}
+
+/* Link contrast and underlines */
+a {
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Button focus states */
+button:focus-visible {
+  box-shadow: 0 0 0 var(--focus-ring-width) var(--focus-ring-color);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-bg-input: rgba(255, 255, 255, 0.2);
+    --color-bg-input-hover: rgba(255, 255, 255, 0.25);
+    --color-bg-input-focus: rgba(255, 255, 255, 0.3);
+    --color-border-input: rgba(255, 255, 255, 0.5);
+    --color-border-input-focus: rgba(255, 255, 255, 0.7);
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea,
+  select {
+    border-width: 2px !important;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Keyboard navigation indicators */
+.keyboard-navigating *:focus {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color) !important;
+  outline-offset: var(--focus-ring-offset) !important;
+}
+
+/* Improved heading hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Ensure interactive elements have minimum touch target size */
+button,
+a,
+input,
+select,
+textarea {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Icon buttons need padding for touch targets */
+button[aria-label] {
+  padding: 8px;
+}
+
+/* Improved table accessibility */
+table {
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  font-weight: 600;
+}
+
+/* Zebra striping for better row differentiation */
+tbody tr:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Focus within for form groups */
+.form-group:focus-within {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 8px;
+  margin: -8px;
+}
