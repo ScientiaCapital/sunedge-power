@@ -2,8 +2,8 @@
   "name": "sunedge-power",
   "private": true,
   "version": "0.1.0",
-  "description": "SunEdge Power - Solar panel installation services in the California Central Valley",
-  "author": "SunEdge Power",
+  "description": "**URL**: https://lovable.dev/projects/14a6b7eb-6adc-4ddf-8a43-5c13462cd751",
+  "author": "",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,6 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource-variable/inter": "^5.2.6",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
@@ -47,6 +48,7 @@
     "cmdk": "^1.0.0",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.3.0",
+    "framer-motion": "^12.23.0",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.462.0",
     "next-themes": "^0.3.0",
@@ -91,14 +93,12 @@
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1"
   },
-  "description": "**URL**: https://lovable.dev/projects/14a6b7eb-6adc-4ddf-8a43-5c13462cd751",
   "main": "eslint.config.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ScientiaCapital/sunny-web-power-up.git"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ScientiaCapital/sunny-web-power-up/issues"

@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   Wrench,
   Building,
@@ -10,74 +10,58 @@ import {
   Handshake,
   Settings,
   TrendingUp,
-} from "lucide-react";
+} from 'lucide-react';
 
 const ServicesSection = () => {
   const services = [
     {
-      icon: <Home className="h-8 w-8" />,
-      title: "Residential Solar",
-      description:
-        "Expert installation of residential solar systems on all roof types, designed to maximize energy savings for Florida homeowners.",
-      highlights: [
-        "Custom system design",
-        "All roof types",
-        "Energy savings",
-      ],
-    },
-    {
       icon: <Building className="h-8 w-8" />,
-      title: "Commercial Solar",
+      title: 'Commercial & Industrial Solar',
       description:
-        "Specialized commercial installations, including rooftop and ground mount systems, leveraging our heavy equipment and expertise.",
-      highlights: [
-        "Rooftop & ground mount",
-        "Heavy equipment",
-        "Commercial expertise",
-      ],
+        'Large-scale installations for businesses, warehouses, and manufacturing facilities. We handle projects from 100kW to multi-megawatt systems nationwide.',
+      highlights: ['100kW to MW+ systems', 'Turnkey installation', 'Maximum ROI focus'],
     },
     {
-      icon: <Wrench className="h-8 w-8" />,
-      title: "Ground Mount Systems",
+      icon: <Home className="h-8 w-8" />,
+      title: 'Multi-Family & Apartments',
       description:
-        "Our specialty. We utilize advanced drilling equipment and techniques for optimal stability and performance in Florida's terrain.",
-      highlights: [
-        "Advanced drilling",
-        "Optimal stability",
-        "Florida terrain expertise",
-      ],
+        'Specialized solar solutions for apartment complexes and multi-family properties. Reduce operating costs and increase property value.',
+      highlights: ['Apartment complexes', 'Property value increase', 'Tenant savings programs'],
     },
     {
-      icon: <RefreshCw className="h-8 w-8" />,
-      title: "Detach & Reset",
+      icon: <MapPin className="h-8 w-8" />,
+      title: 'Solar Farms & Ground Mounts',
       description:
-        "Professional solar panel removal and reinstallation services to accommodate roof repairs or replacements.",
-      highlights: [
-        "Safe removal",
-        "Expert reinstallation",
-        "Warranty protection",
-      ],
+        'Utility-scale solar farms and ground mount systems. Our heavy equipment and expertise handle projects across multiple states.',
+      highlights: ['Utility-scale projects', 'Multi-state operations', 'Specialized equipment'],
+    },
+    {
+      icon: <TrendingUp className="h-8 w-8" />,
+      title: 'Amusement Parks & Venues',
+      description:
+        'Custom solar solutions for theme parks, stadiums, and large venues. We understand the unique power demands of entertainment facilities.',
+      highlights: ['High-demand facilities', 'Custom engineering', 'Minimal disruption install'],
     },
   ];
 
   const coreStrengths = [
     {
       icon: <Settings className="h-6 w-6 text-secondary" />,
-      title: "Specialized Equipment",
+      title: 'Heavy Equipment Fleet',
       description:
-        "Advanced equipment for drilling and ground mount installations enables us to tackle complex commercial projects efficiently and safely.",
+        'Our specialized drilling rigs and ground mount equipment handle the largest commercial projects efficiently, from solar farms to industrial installations.',
     },
     {
       icon: <MapPin className="h-6 w-6 text-secondary" />,
-      title: "Local Market Knowledge",
+      title: 'Multi-State Operations',
       description:
-        "We expertly navigate Florida's unique regulations, permitting, and utility requirements, streamlining the process for our partners.",
+        'Licensed and operating across multiple states, we navigate complex regulations and utility requirements nationwide from our Florida headquarters.',
     },
     {
       icon: <Handshake className="h-6 w-6 text-secondary" />,
-      title: "Partnership Focused",
+      title: 'Turnkey Solutions',
       description:
-        "Our flexible model allows partners to leverage our installation expertise while focusing on sales and customer acquisition.",
+        'From engineering to installation, we deliver complete solar solutions that maximize ROI for commercial property owners and businesses.',
     },
   ];
 
@@ -90,10 +74,11 @@ const ServicesSection = () => {
             Our Services
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            Comprehensive Solar Solutions for Florida
+            Solar Solutions That Save You Money
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            SunEdge Power offers comprehensive solar installation and related services for residential and commercial projects. With our specialized equipment and extensive experience since 2006, we provide high-quality, reliable solutions.
+            Whether you're a homeowner looking to cut energy costs or a business wanting to go
+            green, we make solar simple. Our expert team handles everything from start to finish.
           </p>
         </div>
 
@@ -111,9 +96,7 @@ const ServicesSection = () => {
                 <CardTitle className="text-2xl mb-4">{service.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {service.description}
-                </p>
+                <p className="text-muted-foreground mb-6 leading-relaxed">{service.description}</p>
                 <ul className="space-y-2">
                   {service.highlights.map((highlight, idx) => (
                     <li key={idx} className="flex items-center text-sm">
@@ -138,12 +121,8 @@ const ServicesSection = () => {
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-secondary/10 rounded-full mb-4 group-hover:bg-secondary/20 transition-colors">
                   {strength.icon}
                 </div>
-                <h4 className="text-xl font-semibold mb-3 text-foreground">
-                  {strength.title}
-                </h4>
-                <p className="text-muted-foreground leading-relaxed">
-                  {strength.description}
-                </p>
+                <h4 className="text-xl font-semibold mb-3 text-foreground">{strength.title}</h4>
+                <p className="text-muted-foreground leading-relaxed">{strength.description}</p>
               </div>
             ))}
           </div>

@@ -1,30 +1,30 @@
-import { Zap, Building, MapPin, Award, Wrench, Users } from "lucide-react";
+import { Zap, Building, MapPin, Award, Wrench, Users } from 'lucide-react';
 
 const StatsSection = () => {
   const stats = [
     {
-      icon: <Award className="h-8 w-8" />,
-      value: "Since 2006",
-      label: "Florida Solar Experts",
-      description: "18+ years of proven expertise statewide",
+      icon: <Zap className="h-8 w-8" />,
+      value: '500MW+',
+      label: 'Solar Installed',
+      description: 'Powering businesses nationwide',
     },
     {
-      icon: <Wrench className="h-8 w-8" />,
-      value: "Specialized",
-      label: "Equipment Fleet",
-      description: "Advanced drilling & ground mount tools",
+      icon: <Building className="h-8 w-8" />,
+      value: '1,000+',
+      label: 'Commercial Projects',
+      description: 'From 100kW to multi-MW systems',
     },
     {
       icon: <MapPin className="h-8 w-8" />,
-      value: "Statewide",
-      label: "Local Market Knowledge",
-      description: "Permitting, regulations, utilities",
+      value: '12 States',
+      label: 'Nationwide Coverage',
+      description: 'Licensed across America',
     },
     {
-      icon: <Users className="h-8 w-8" />,
-      value: "Partners",
-      label: "Flexible Model",
-      description: "Expert install, you focus on sales",
+      icon: <Award className="h-8 w-8" />,
+      value: '18+ Years',
+      label: 'Industry Experience',
+      description: 'Trusted since 2006',
     },
   ];
 
@@ -42,9 +42,7 @@ const StatsSection = () => {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full mb-4 border border-white/30">
                 {stat.icon}
               </div>
-              <div className="text-4xl md:text-5xl font-bold mb-2">
-                {stat.value}
-              </div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">{stat.value}</div>
               <div className="text-xl font-semibold mb-2">{stat.label}</div>
               <div className="text-white/80 text-sm">{stat.description}</div>
             </div>
