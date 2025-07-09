@@ -1,7 +1,9 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "sunedge-power",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "SunEdge Power - Solar panel installation services in the California Central Valley",
+  "author": "SunEdge Power",
   "type": "module",
   "scripts": {
     "dev": "vite",
