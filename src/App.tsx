@@ -13,7 +13,7 @@ export default function App() {
             {/* Logo - Clean, Professional */}
             <div className="flex items-center">
               <h1 className="text-2xl lg:text-3xl font-bold tracking-tight text-white">
-                SunEdge<span className="text-cyan-400">Power</span>
+                SunEdge<span className="text-orange-500">Power</span>
               </h1>
             </div>
 
@@ -23,7 +23,7 @@ export default function App() {
               <a href="#epc-services" className="text-slate-300 hover:text-white transition-colors duration-200 font-medium">EPC Services</a>
               <a href="#capabilities" className="text-slate-300 hover:text-white transition-colors duration-200 font-medium">Capabilities</a>
               <a href="#markets" className="text-slate-300 hover:text-white transition-colors duration-200 font-medium">Markets</a>
-              <a href="#contact" className="bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-2.5 font-semibold transition-colors duration-200">
+              <a href="#contact" className="bg-orange-600 hover:bg-orange-500 text-white px-6 py-2.5 font-semibold transition-colors duration-200">
                 Request Consultation
               </a>
             </div>
@@ -54,7 +54,7 @@ export default function App() {
               <a
                 href="#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full mt-4 bg-cyan-600 text-white px-6 py-3 font-semibold transition text-center"
+                className="block w-full mt-4 bg-orange-600 text-white px-6 py-3 font-semibold transition text-center"
               >
                 Request Consultation
               </a>
@@ -76,7 +76,7 @@ export default function App() {
               {/* Professional Badge */}
               <div className="mb-8">
                 <span className="inline-flex items-center gap-2 px-4 py-2 bg-slate-800 border border-slate-600 text-slate-300 text-sm font-medium tracking-wide">
-                  <svg className="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   CLASS A GENERAL CONTRACTOR | LICENSED, BONDED & INSURED
@@ -85,7 +85,7 @@ export default function App() {
 
               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight">
                 <span className="text-white">Full-Service</span>
-                <span className="block mt-2 text-cyan-400">
+                <span className="block mt-2 text-amber-400">
                   C&I Solar EPC
                 </span>
                 <span className="block mt-2 text-white">Contractor</span>
@@ -98,14 +98,14 @@ export default function App() {
 
               <p className="text-lg sm:text-xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
                 <span className="font-semibold text-white">19 years</span> of construction excellence.
-                <span className="font-semibold text-cyan-400"> 2+ MW</span> of commercial solar installed to date.
+                <span className="font-semibold text-amber-400"> 2+ MW</span> of commercial solar installed to date.
                 <span className="block mt-2 text-slate-400">Turnkey project delivery. Nationwide capabilities.</span>
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a
                   href="#contact"
-                  className="w-full sm:w-auto bg-cyan-600 hover:bg-cyan-500 text-white px-10 py-4 text-lg font-semibold transition-colors duration-200"
+                  className="w-full sm:w-auto bg-orange-600 hover:bg-orange-500 text-white px-10 py-4 text-lg font-semibold transition-colors duration-200"
                 >
                   Request a Consultation
                 </a>
@@ -308,7 +308,7 @@ export default function App() {
                   </div>
                   <div className="flex-grow">
                     <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">Ron McCabe</h3>
-                    <p className="text-cyan-600 font-semibold text-lg mt-1">Managing Member & Partner</p>
+                    <p className="text-orange-600 font-semibold text-lg mt-1">Managing Member & Partner</p>
                     <p className="text-slate-500 font-medium">Founder | Since 2006</p>
                   </div>
                 </div>
@@ -345,7 +345,7 @@ export default function App() {
                   </div>
                   <div className="flex-grow">
                     <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">Kyle Amundsen</h3>
-                    <p className="text-cyan-600 font-semibold text-lg mt-1">Partner & Solar Operations Director</p>
+                    <p className="text-orange-600 font-semibold text-lg mt-1">Partner & Solar Operations Director</p>
                     <p className="text-slate-500 font-medium">Since 2017</p>
                   </div>
                 </div>
@@ -454,7 +454,7 @@ export default function App() {
             <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
               <div className="bg-slate-800 p-6 sm:p-8 text-center hover:bg-slate-700 transition-colors duration-200 border border-slate-700">
                 <div className="w-12 h-12 bg-slate-700 flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                   </svg>
                 </div>
@@ -464,7 +464,7 @@ export default function App() {
 
               <div className="bg-slate-800 p-6 sm:p-8 text-center hover:bg-slate-700 transition-colors duration-200 border border-slate-700">
                 <div className="w-12 h-12 bg-slate-700 flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
@@ -475,7 +475,7 @@ export default function App() {
 
               <div className="bg-slate-800 p-6 sm:p-8 text-center hover:bg-slate-700 transition-colors duration-200 border border-slate-700">
                 <div className="w-12 h-12 bg-slate-700 flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
                   </svg>
                 </div>
@@ -485,7 +485,7 @@ export default function App() {
 
               <div className="bg-slate-800 p-6 sm:p-8 text-center hover:bg-slate-700 transition-colors duration-200 border border-slate-700">
                 <div className="w-12 h-12 bg-slate-700 flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
                   </svg>
                 </div>
@@ -495,7 +495,7 @@ export default function App() {
 
               <div className="bg-slate-800 p-6 sm:p-8 text-center hover:bg-slate-700 transition-colors duration-200 border border-slate-700 col-span-2 lg:col-span-1">
                 <div className="w-12 h-12 bg-slate-700 flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
@@ -518,13 +518,13 @@ export default function App() {
               we deliver turnkey EPC solutions tailored to your requirements.
             </p>
             <div className="bg-slate-900 border border-slate-700 p-10 max-w-md mx-auto">
-              <div className="w-16 h-16 bg-cyan-600 flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-orange-600 flex items-center justify-center mx-auto mb-6">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               </div>
               <p className="text-white font-bold text-2xl mb-2">SunEdge Power</p>
-              <p className="text-cyan-400 font-semibold text-lg mb-4">Full-Service C&I Solar EPC</p>
+              <p className="text-amber-400 font-semibold text-lg mb-4">Full-Service C&I Solar EPC</p>
               <div className="space-y-2 text-slate-300">
                 <p className="font-medium">Class A General Contractor</p>
                 <p className="text-sm text-slate-400">Licensed, Bonded & Insured</p>
@@ -539,7 +539,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-              SunEdge<span className="text-cyan-400">Power</span>
+              SunEdge<span className="text-orange-500">Power</span>
             </h2>
             <p className="text-slate-400 font-medium tracking-widest text-sm mb-4 uppercase">
               Engineering &bull; Procurement &bull; Construction
