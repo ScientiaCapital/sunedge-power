@@ -1,42 +1,37 @@
 import { useState } from 'react';
 import './index.css';
-import QuoteForm from './components/QuoteForm';
 
 export default function App() {
-  const [isQuoteFormOpen, setIsQuoteFormOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-white">
       {/* Professional Navigation */}
-      <nav className="bg-slate-900 text-white sticky top-0 z-50 shadow-xl">
+      <nav className="bg-slate-900 text-white sticky top-0 z-50 border-b border-slate-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            {/* Logo */}
+            {/* Logo - Clean, Professional */}
             <div className="flex items-center">
-              <h1 className="text-2xl lg:text-3xl font-bold tracking-tight text-amber-400">
-                SunEdge Power
+              <h1 className="text-2xl lg:text-3xl font-bold tracking-tight text-white">
+                SunEdge<span className="text-cyan-400">Power</span>
               </h1>
             </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#about" className="text-gray-300 hover:text-white transition font-medium">About</a>
-              <a href="#capabilities" className="text-gray-300 hover:text-white transition font-medium">Capabilities</a>
-              <a href="#services" className="text-gray-300 hover:text-white transition font-medium">Services</a>
-              <a href="#industries" className="text-gray-300 hover:text-white transition font-medium">Industries</a>
-              <button
-                onClick={() => setIsQuoteFormOpen(true)}
-                className="bg-amber-500 hover:bg-amber-600 text-slate-900 px-6 py-3 rounded-lg font-bold transition transform hover:scale-105"
-              >
-                Partner With Us
-              </button>
+              <a href="#about" className="text-slate-300 hover:text-white transition-colors duration-200 font-medium">About</a>
+              <a href="#epc-services" className="text-slate-300 hover:text-white transition-colors duration-200 font-medium">EPC Services</a>
+              <a href="#capabilities" className="text-slate-300 hover:text-white transition-colors duration-200 font-medium">Capabilities</a>
+              <a href="#markets" className="text-slate-300 hover:text-white transition-colors duration-200 font-medium">Markets</a>
+              <a href="#contact" className="bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-2.5 font-semibold transition-colors duration-200">
+                Request Consultation
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2"
+              className="md:hidden p-2 hover:bg-slate-800 transition"
               aria-label="Toggle menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -52,16 +47,17 @@ export default function App() {
           {/* Mobile Menu */}
           {isMobileMenuOpen && (
             <div className="md:hidden py-4 border-t border-slate-700">
-              <a href="#about" className="block py-3 text-gray-300 hover:text-white transition">About</a>
-              <a href="#capabilities" className="block py-3 text-gray-300 hover:text-white transition">Capabilities</a>
-              <a href="#services" className="block py-3 text-gray-300 hover:text-white transition">Services</a>
-              <a href="#industries" className="block py-3 text-gray-300 hover:text-white transition">Industries</a>
-              <button
-                onClick={() => { setIsQuoteFormOpen(true); setIsMobileMenuOpen(false); }}
-                className="w-full mt-4 bg-amber-500 hover:bg-amber-600 text-slate-900 px-6 py-3 rounded-lg font-bold transition"
+              <a href="#about" className="block py-3 text-slate-300 hover:text-white transition">About</a>
+              <a href="#epc-services" className="block py-3 text-slate-300 hover:text-white transition">EPC Services</a>
+              <a href="#capabilities" className="block py-3 text-slate-300 hover:text-white transition">Capabilities</a>
+              <a href="#markets" className="block py-3 text-slate-300 hover:text-white transition">Markets</a>
+              <a
+                href="#contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block w-full mt-4 bg-cyan-600 text-white px-6 py-3 font-semibold transition text-center"
               >
-                Partner With Us
-              </button>
+                Request Consultation
+              </a>
             </div>
           )}
         </div>
@@ -69,427 +65,492 @@ export default function App() {
 
       <main>
         {/* Hero Section - Enterprise C&I Positioning */}
-        <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcn4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-30"></div>
+        <div className="relative bg-slate-900 text-white overflow-hidden">
+          {/* Subtle Technical Grid Pattern */}
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-60"></div>
+          </div>
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-36">
             <div className="text-center">
-              <div className="mb-6">
-                <span className="inline-block px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-300 text-sm font-semibold tracking-wide">
-                  LICENSED, BONDED & INSURED • CLASS A GENERAL CONTRACTOR
+              {/* Professional Badge */}
+              <div className="mb-8">
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-slate-800 border border-slate-600 text-slate-300 text-sm font-medium tracking-wide">
+                  <svg className="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  CLASS A GENERAL CONTRACTOR | LICENSED, BONDED & INSURED
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-                Florida's Premier
-                <span className="block bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 bg-clip-text text-transparent">
-                  Commercial & Industrial
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight">
+                <span className="text-white">Full-Service</span>
+                <span className="block mt-2 text-cyan-400">
+                  C&I Solar EPC
                 </span>
-                Solar Installation Partner
+                <span className="block mt-2 text-white">Contractor</span>
               </h1>
 
-              <p className="text-xl sm:text-2xl text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed">
-                19 years of construction excellence. 5+ MW of commercial solar installed to date.
+              {/* EPC Tagline */}
+              <p className="text-base sm:text-lg text-slate-400 font-medium tracking-widest mb-8 uppercase">
+                Engineering &bull; Procurement &bull; Construction
+              </p>
+
+              <p className="text-lg sm:text-xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+                <span className="font-semibold text-white">19 years</span> of construction excellence.
+                <span className="font-semibold text-cyan-400"> 2+ MW</span> of commercial solar installed to date.
+                <span className="block mt-2 text-slate-400">Turnkey project delivery. Nationwide capabilities.</span>
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <button
-                  onClick={() => setIsQuoteFormOpen(true)}
-                  className="w-full sm:w-auto bg-amber-500 hover:bg-amber-600 text-slate-900 px-8 py-4 rounded-lg text-lg font-bold transition transform hover:scale-105 shadow-2xl"
-                >
-                  Become a Partner
-                </button>
                 <a
-                  href="#capabilities"
-                  className="w-full sm:w-auto bg-slate-700 hover:bg-slate-600 text-white px-8 py-4 rounded-lg text-lg font-bold transition transform hover:scale-105 border border-slate-600"
+                  href="#contact"
+                  className="w-full sm:w-auto bg-cyan-600 hover:bg-cyan-500 text-white px-10 py-4 text-lg font-semibold transition-colors duration-200"
                 >
-                  View Capabilities
+                  Request a Consultation
+                </a>
+                <a
+                  href="#epc-services"
+                  className="w-full sm:w-auto bg-slate-800 hover:bg-slate-700 text-white px-10 py-4 text-lg font-semibold transition-colors duration-200 border border-slate-600 text-center"
+                >
+                  Explore EPC Services
                 </a>
               </div>
             </div>
           </div>
+
+          {/* Bottom Edge */}
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-slate-700"></div>
         </div>
 
-        {/* Stats Dashboard */}
-        <div className="bg-white py-12 sm:py-16 border-b border-gray-200">
+        {/* Stats Dashboard - Clean Enterprise Design */}
+        <div className="bg-white py-16 sm:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 max-w-4xl mx-auto">
-              <div className="text-center">
-                <div className="text-4xl sm:text-5xl font-bold text-cyan-600 mb-2">5+ MW</div>
-                <div className="text-sm sm:text-base text-gray-600 font-semibold">Solar Capacity Installed</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl sm:text-5xl font-bold text-amber-600 mb-2">19 Years</div>
-                <div className="text-sm sm:text-base text-gray-600 font-semibold">Industry Experience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl sm:text-5xl font-bold text-green-600 mb-2">100%</div>
-                <div className="text-sm sm:text-base text-gray-600 font-semibold">Licensed & Insured</div>
+            <div className="bg-slate-50 border border-slate-200 p-8 sm:p-12">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-6 max-w-5xl mx-auto">
+                {/* Stat 1 */}
+                <div className="text-center">
+                  <div className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2">2+ MW</div>
+                  <div className="text-xs sm:text-sm text-slate-500 font-medium tracking-wide uppercase">Installed Capacity</div>
+                </div>
+
+                {/* Stat 2 */}
+                <div className="text-center">
+                  <div className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2">19</div>
+                  <div className="text-xs sm:text-sm text-slate-500 font-medium tracking-wide uppercase">Years in Construction</div>
+                </div>
+
+                {/* Stat 3 */}
+                <div className="text-center">
+                  <div className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2">EPC</div>
+                  <div className="text-xs sm:text-sm text-slate-500 font-medium tracking-wide uppercase">Turnkey Delivery</div>
+                </div>
+
+                {/* Stat 4 */}
+                <div className="text-center">
+                  <div className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2">USA</div>
+                  <div className="text-xs sm:text-sm text-slate-500 font-medium tracking-wide uppercase">Nationwide Service</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Capabilities - Our Competitive Edge */}
-        <div id="capabilities" className="py-16 sm:py-24 bg-white">
+        {/* EPC Services - Full Lifecycle */}
+        <div id="epc-services" className="py-20 sm:py-28 bg-white border-t border-slate-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
-                What Sets SunEdge Apart
+              <span className="inline-block px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium mb-4 tracking-wide uppercase">Full-Service EPC</span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+                Complete Project Lifecycle
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-                Two decades of construction expertise combined with cutting-edge solar installation capabilities
+              <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                From initial engineering through final commissioning, SunEdge Power delivers turnkey C&I solar solutions
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-              <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 sm:p-8 rounded-2xl border border-slate-200 hover:shadow-xl transition">
-                <div className="w-14 h-14 bg-amber-500 rounded-lg flex items-center justify-center mb-6">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Engineering */}
+              <div className="group bg-white p-8 border border-slate-200 hover:border-slate-300 transition-colors duration-200">
+                <div className="w-12 h-12 bg-slate-900 flex items-center justify-center mb-6">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Advanced Equipment</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  State-of-the-art drilling equipment purpose-built for commercial ground-mount installations. Superior efficiency and safety on complex projects.
-                </p>
+                <h3 className="text-xl font-bold text-slate-900 mb-4">Engineering</h3>
+                <ul className="space-y-3 text-slate-600 text-sm">
+                  <li className="flex items-start gap-2">
+                    <span className="text-slate-400 mt-0.5">&#8212;</span>
+                    <span>System design & sizing</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-slate-400 mt-0.5">&#8212;</span>
+                    <span>Structural analysis</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-slate-400 mt-0.5">&#8212;</span>
+                    <span>Electrical engineering</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-slate-400 mt-0.5">&#8212;</span>
+                    <span>Permit documentation</span>
+                  </li>
+                </ul>
               </div>
 
-              <div className="bg-gradient-to-br from-cyan-50 to-blue-100 p-6 sm:p-8 rounded-2xl border border-cyan-200 hover:shadow-xl transition">
-                <div className="w-14 h-14 bg-cyan-600 rounded-lg flex items-center justify-center mb-6">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              {/* Procurement */}
+              <div className="group bg-white p-8 border border-slate-200 hover:border-slate-300 transition-colors duration-200">
+                <div className="w-12 h-12 bg-slate-900 flex items-center justify-center mb-6">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Florida Expertise</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Deep understanding of Florida's regulatory landscape, permitting frameworks, and utility interconnection protocols. Accelerated timelines.
-                </p>
+                <h3 className="text-xl font-bold text-slate-900 mb-4">Procurement</h3>
+                <ul className="space-y-3 text-slate-600 text-sm">
+                  <li className="flex items-start gap-2">
+                    <span className="text-slate-400 mt-0.5">&#8212;</span>
+                    <span>Equipment sourcing</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-slate-400 mt-0.5">&#8212;</span>
+                    <span>Supply chain management</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-slate-400 mt-0.5">&#8212;</span>
+                    <span>Vendor coordination</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-slate-400 mt-0.5">&#8212;</span>
+                    <span>Quality assurance</span>
+                  </li>
+                </ul>
               </div>
 
-              <div className="bg-gradient-to-br from-green-50 to-emerald-100 p-6 sm:p-8 rounded-2xl border border-green-200 hover:shadow-xl transition">
-                <div className="w-14 h-14 bg-green-600 rounded-lg flex items-center justify-center mb-6">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              {/* Construction */}
+              <div className="group bg-white p-8 border border-slate-200 hover:border-slate-300 transition-colors duration-200">
+                <div className="w-12 h-12 bg-slate-900 flex items-center justify-center mb-6">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Partnership Model</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Flexible collaboration framework for solar companies, EPCs, and roofing contractors. Leverage our installation expertise while you focus on sales.
-                </p>
+                <h3 className="text-xl font-bold text-slate-900 mb-4">Construction</h3>
+                <ul className="space-y-3 text-slate-600 text-sm">
+                  <li className="flex items-start gap-2">
+                    <span className="text-slate-400 mt-0.5">&#8212;</span>
+                    <span>Site preparation</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-slate-400 mt-0.5">&#8212;</span>
+                    <span>Racking & mounting</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-slate-400 mt-0.5">&#8212;</span>
+                    <span>Electrical installation</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-slate-400 mt-0.5">&#8212;</span>
+                    <span>System commissioning</span>
+                  </li>
+                </ul>
               </div>
 
-              <div className="bg-gradient-to-br from-purple-50 to-pink-100 p-6 sm:p-8 rounded-2xl border border-purple-200 hover:shadow-xl transition">
-                <div className="w-14 h-14 bg-purple-600 rounded-lg flex items-center justify-center mb-6">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              {/* O&M Support */}
+              <div className="group bg-white p-8 border border-slate-200 hover:border-slate-300 transition-colors duration-200">
+                <div className="w-12 h-12 bg-slate-900 flex items-center justify-center mb-6">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Detach & Reset</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Comprehensive D&R services for solar arrays during roof replacement. Seamless collaboration with roofing contractors and property owners.
-                </p>
+                <h3 className="text-xl font-bold text-slate-900 mb-4">O&M Support</h3>
+                <ul className="space-y-3 text-slate-600 text-sm">
+                  <li className="flex items-start gap-2">
+                    <span className="text-slate-400 mt-0.5">&#8212;</span>
+                    <span>Utility interconnection</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-slate-400 mt-0.5">&#8212;</span>
+                    <span>System handoff & training</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-slate-400 mt-0.5">&#8212;</span>
+                    <span>Warranty coordination</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-slate-400 mt-0.5">&#8212;</span>
+                    <span>O&M partner referrals</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
 
         {/* Leadership Team */}
-        <div id="about" className="bg-slate-50 py-16 sm:py-24">
+        <div id="about" className="bg-slate-50 py-20 sm:py-28 border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+              <span className="inline-block px-3 py-1 bg-slate-200 text-slate-600 text-sm font-medium mb-4 tracking-wide uppercase">Leadership</span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
                 Leadership Team
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
                 Decades of combined expertise in construction, solar installation, and commercial project management
               </p>
             </div>
 
             <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
               {/* Ron McCabe */}
-              <div className="bg-white rounded-2xl p-6 sm:p-10 shadow-xl border-2 border-amber-200">
-                <div className="flex flex-col sm:flex-row items-start gap-6 mb-6">
-                  <div className="w-24 h-24 sm:w-28 sm:h-28 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-5xl text-white font-bold">R</span>
+              <div className="bg-white p-8 sm:p-10 border border-slate-200">
+                <div className="flex flex-col sm:flex-row items-start gap-6 mb-8">
+                  <div className="w-24 h-24 sm:w-28 sm:h-28 bg-slate-900 flex items-center justify-center flex-shrink-0">
+                    <span className="text-4xl sm:text-5xl text-white font-bold">R</span>
                   </div>
                   <div className="flex-grow">
                     <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">Ron McCabe</h3>
-                    <p className="text-amber-600 font-bold text-lg">Managing Member & Partner</p>
-                    <p className="text-gray-600">Founder (Since 2006)</p>
+                    <p className="text-cyan-600 font-semibold text-lg mt-1">Managing Member & Partner</p>
+                    <p className="text-slate-500 font-medium">Founder | Since 2006</p>
                   </div>
                 </div>
 
-                <div className="space-y-4 text-gray-700 leading-relaxed text-sm sm:text-base">
+                <div className="space-y-4 text-slate-600 leading-relaxed">
                   <p>
                     As founder and managing member of SunEdge Power, Ron McCabe has been driving the company's vision since 2006.
-                    Holding a <span className="font-bold text-amber-600">Class "A" General Contractor license</span>, Ron transitioned
-                    his extensive construction background—spanning residential and commercial building as well as specialized sinkhole
-                    remediation—into the emerging solar industry.
+                    Holding a <span className="font-semibold text-slate-900">Class "A" General Contractor license</span>, Ron transitioned
+                    his extensive construction background--spanning residential and commercial building as well as specialized sinkhole
+                    remediation--into the emerging solar industry.
                   </p>
                   <p>
                     His comprehensive grasp of construction fundamentals, combined with hands-on experience in heavy equipment operations,
-                    gives SunEdge Power a distinct competitive edge when executing sophisticated solar installations throughout Florida.
+                    gives SunEdge Power a distinct competitive edge when executing sophisticated solar installations nationwide.
                   </p>
-                  <p className="font-semibold text-slate-900">
+                  <p className="text-slate-700 bg-slate-50 p-4 border-l-2 border-slate-900">
                     Ron spearheads business development initiatives and strategic alliance formation while maintaining oversight of all
                     operational elements, from initial site development through final system commissioning.
                   </p>
                 </div>
 
-                <div className="flex gap-2 flex-wrap mt-6">
-                  <span className="bg-amber-100 text-amber-800 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold">Class A Contractor</span>
-                  <span className="bg-blue-100 text-blue-800 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold">19+ Years</span>
-                  <span className="bg-green-100 text-green-800 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold">Heavy Equipment Expert</span>
-                  <span className="bg-purple-100 text-purple-800 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold">Construction Expert</span>
+                <div className="flex gap-2 flex-wrap mt-8">
+                  <span className="bg-slate-100 text-slate-700 px-3 py-1.5 text-sm font-medium">Class A Contractor</span>
+                  <span className="bg-slate-100 text-slate-700 px-3 py-1.5 text-sm font-medium">19+ Years</span>
+                  <span className="bg-slate-100 text-slate-700 px-3 py-1.5 text-sm font-medium">Heavy Equipment</span>
                 </div>
               </div>
 
               {/* Kyle Amundsen */}
-              <div className="bg-white rounded-2xl p-6 sm:p-10 shadow-xl border-2 border-cyan-200">
-                <div className="flex flex-col sm:flex-row items-start gap-6 mb-6">
-                  <div className="w-24 h-24 sm:w-28 sm:h-28 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-5xl text-white font-bold">K</span>
+              <div className="bg-white p-8 sm:p-10 border border-slate-200">
+                <div className="flex flex-col sm:flex-row items-start gap-6 mb-8">
+                  <div className="w-24 h-24 sm:w-28 sm:h-28 bg-slate-800 flex items-center justify-center flex-shrink-0">
+                    <span className="text-4xl sm:text-5xl text-white font-bold">K</span>
                   </div>
                   <div className="flex-grow">
                     <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">Kyle Amundsen</h3>
-                    <p className="text-cyan-600 font-bold text-lg">Partner & Solar Operations Director</p>
-                    <p className="text-gray-600">Since 2017</p>
+                    <p className="text-cyan-600 font-semibold text-lg mt-1">Partner & Solar Operations Director</p>
+                    <p className="text-slate-500 font-medium">Since 2017</p>
                   </div>
                 </div>
 
-                <div className="space-y-4 text-gray-700 leading-relaxed text-sm sm:text-base">
+                <div className="space-y-4 text-slate-600 leading-relaxed">
                   <p>
                     Kyle Amundsen brings battle-tested solar industry leadership to SunEdge Power, with a portfolio spanning
-                    <span className="font-bold text-cyan-600"> residential installations, commercial-scale projects, and utility-grade deployments</span>.
-                    Since entering the solar sector in 2017, Kyle has built a reputation as a forward-thinking leader within Florida's renewable energy community.
+                    <span className="font-semibold text-slate-900"> residential installations, commercial-scale projects, and utility-grade deployments</span>.
+                    Since entering the solar sector in 2017, Kyle has built a reputation as a forward-thinking leader within the renewable energy community.
                   </p>
                   <p>
                     His comprehensive understanding of system engineering, installation best practices, and project execution strategies
                     delivers exceptional value to both the company and its strategic partners.
                   </p>
-                  <p className="font-semibold text-slate-900">
+                  <p className="text-slate-700 bg-slate-50 p-4 border-l-2 border-slate-800">
                     As Director of Solar Operations, Kyle manages the full scope of solar activities, with particular emphasis on complex
                     commercial installations and microgrid solutions, while also directing specialized ground-mount drilling operations.
                   </p>
                 </div>
 
-                <div className="flex gap-2 flex-wrap mt-6">
-                  <span className="bg-cyan-100 text-cyan-800 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold">Solar Operations</span>
-                  <span className="bg-amber-100 text-amber-800 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold">8+ Years</span>
-                  <span className="bg-purple-100 text-purple-800 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold">On-Time Delivery</span>
-                  <span className="bg-green-100 text-green-800 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold">Residential & Commercial Expert</span>
+                <div className="flex gap-2 flex-wrap mt-8">
+                  <span className="bg-slate-100 text-slate-700 px-3 py-1.5 text-sm font-medium">Solar Operations</span>
+                  <span className="bg-slate-100 text-slate-700 px-3 py-1.5 text-sm font-medium">8+ Years</span>
+                  <span className="bg-slate-100 text-slate-700 px-3 py-1.5 text-sm font-medium">Project Delivery</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Services */}
-        <div id="services" className="py-16 sm:py-24 bg-white">
+        {/* Capabilities - Our Competitive Edge */}
+        <div id="capabilities" className="py-20 sm:py-28 bg-white border-t border-slate-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
-                Comprehensive C&I Solar Services
+              <span className="inline-block px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium mb-4 tracking-wide uppercase">Capabilities</span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+                Our Competitive Edge
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-                Full-spectrum installation capabilities for commercial, industrial, and utility-scale solar projects
+              <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                What sets SunEdge Power apart as your full-service C&I solar EPC partner
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
-              <div className="bg-gradient-to-br from-amber-50 to-yellow-50 p-6 sm:p-8 rounded-2xl border-2 border-amber-200 hover:shadow-xl transition">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Advanced Equipment */}
+              <div className="group bg-white p-8 border border-slate-200 hover:border-slate-300 transition-colors duration-200">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-slate-900 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                     </svg>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-amber-700">Commercial Solar</h3>
+                  <h3 className="text-xl font-bold text-slate-900">Specialized Equipment</h3>
                 </div>
-                <ul className="space-y-3 text-sm sm:text-base text-gray-700">
-                  <li className="flex items-start gap-3">
-                    <span className="text-amber-500 font-bold text-lg flex-shrink-0">✓</span>
-                    <span>Custom system architecture for commercial properties</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-amber-500 font-bold text-lg flex-shrink-0">✓</span>
-                    <span>Rooftop and ground-based installation expertise</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-amber-500 font-bold text-lg flex-shrink-0">✓</span>
-                    <span>Purpose-built equipment for efficient deployment</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-amber-500 font-bold text-lg flex-shrink-0">✓</span>
-                    <span>Complete permitting and utility coordination</span>
-                  </li>
-                </ul>
+                <p className="text-slate-600 leading-relaxed">
+                  Purpose-built drilling and mounting equipment for commercial ground-mount installations. Our heavy equipment capabilities enable efficient deployment across challenging terrain and soil conditions.
+                </p>
               </div>
 
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 sm:p-8 rounded-2xl border-2 border-green-200 hover:shadow-xl transition">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {/* Nationwide Reach */}
+              <div className="group bg-white p-8 border border-slate-200 hover:border-slate-300 transition-colors duration-200">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-slate-900 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-green-700">Ground Mount Systems</h3>
+                  <h3 className="text-xl font-bold text-slate-900">Nationwide Capability</h3>
                 </div>
-                <ul className="space-y-3 text-sm sm:text-base text-gray-700">
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 font-bold text-lg flex-shrink-0">✓</span>
-                    <span>Precision drilling for diverse Florida soil conditions</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 font-bold text-lg flex-shrink-0">✓</span>
-                    <span>Hurricane-rated mounting infrastructure</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 font-bold text-lg flex-shrink-0">✓</span>
-                    <span>Strategic panel positioning for maximum generation</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 font-bold text-lg flex-shrink-0">✓</span>
-                    <span>Full site preparation and system integration</span>
-                  </li>
-                </ul>
+                <p className="text-slate-600 leading-relaxed">
+                  Licensed to operate across the United States with deep regulatory knowledge, permitting expertise, and utility interconnection experience. We navigate local requirements to fast-track your project timeline.
+                </p>
               </div>
 
-              <div className="bg-gradient-to-br from-cyan-50 to-blue-50 p-6 sm:p-8 rounded-2xl border-2 border-cyan-200 hover:shadow-xl transition">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              {/* Construction Heritage */}
+              <div className="group bg-white p-8 border border-slate-200 hover:border-slate-300 transition-colors duration-200">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-slate-900 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-cyan-700">Microgrid Solutions</h3>
+                  <h3 className="text-xl font-bold text-slate-900">Construction Heritage</h3>
                 </div>
-                <ul className="space-y-3 text-sm sm:text-base text-gray-700">
-                  <li className="flex items-start gap-3">
-                    <span className="text-cyan-500 font-bold text-lg flex-shrink-0">✓</span>
-                    <span>Complex commercial microgrid installations</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-cyan-500 font-bold text-lg flex-shrink-0">✓</span>
-                    <span>Battery storage system integration</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-cyan-500 font-bold text-lg flex-shrink-0">✓</span>
-                    <span>Utility-grade deployment experience</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-cyan-500 font-bold text-lg flex-shrink-0">✓</span>
-                    <span>Advanced monitoring and optimization</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 sm:p-8 rounded-2xl border-2 border-purple-200 hover:shadow-xl transition">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-purple-700">Detach & Reset (D&R)</h3>
-                </div>
-                <ul className="space-y-3 text-sm sm:text-base text-gray-700">
-                  <li className="flex items-start gap-3">
-                    <span className="text-purple-500 font-bold text-lg flex-shrink-0">✓</span>
-                    <span>Professional solar array removal for roof work</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-purple-500 font-bold text-lg flex-shrink-0">✓</span>
-                    <span>Secure component storage and protection</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-purple-500 font-bold text-lg flex-shrink-0">✓</span>
-                    <span>Seamless roofing contractor collaboration</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-purple-500 font-bold text-lg flex-shrink-0">✓</span>
-                    <span>Expert reinstallation with full system validation</span>
-                  </li>
-                </ul>
+                <p className="text-slate-600 leading-relaxed">
+                  19 years of general contracting experience translates to superior project management, safety protocols, and build quality. Our Class A license ensures compliance and professionalism on every project.
+                </p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Industries Served */}
-        <div id="industries" className="bg-slate-900 text-white py-16 sm:py-24">
+        {/* Markets Served */}
+        <div id="markets" className="bg-slate-900 text-white py-20 sm:py-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-                Industries We Serve
+              <span className="inline-block px-3 py-1 bg-slate-800 text-slate-400 text-sm font-medium mb-4 tracking-wide uppercase">Markets</span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                Markets We Serve
               </h2>
-              <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
-                Specialized installation expertise across diverse commercial and industrial sectors
+              <p className="text-lg sm:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+                Full-service EPC solutions tailored to the unique requirements of each market segment
               </p>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-              <div className="bg-slate-800 p-6 rounded-xl text-center hover:bg-slate-700 transition">
-                <div className="text-4xl mb-4">🏢</div>
-                <h3 className="text-lg font-bold mb-2">Commercial</h3>
-                <p className="text-sm text-gray-400">Office buildings, retail centers, warehouses</p>
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
+              <div className="bg-slate-800 p-6 sm:p-8 text-center hover:bg-slate-700 transition-colors duration-200 border border-slate-700">
+                <div className="w-12 h-12 bg-slate-700 flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <h3 className="text-base sm:text-lg font-semibold mb-2">Commercial</h3>
+                <p className="text-xs sm:text-sm text-slate-400">Office, retail, warehouses</p>
               </div>
-              <div className="bg-slate-800 p-6 rounded-xl text-center hover:bg-slate-700 transition">
-                <div className="text-4xl mb-4">🏭</div>
-                <h3 className="text-lg font-bold mb-2">Industrial</h3>
-                <p className="text-sm text-gray-400">Manufacturing facilities, distribution centers</p>
+
+              <div className="bg-slate-800 p-6 sm:p-8 text-center hover:bg-slate-700 transition-colors duration-200 border border-slate-700">
+                <div className="w-12 h-12 bg-slate-700 flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-base sm:text-lg font-semibold mb-2">Industrial</h3>
+                <p className="text-xs sm:text-sm text-slate-400">Manufacturing, distribution</p>
               </div>
-              <div className="bg-slate-800 p-6 rounded-xl text-center hover:bg-slate-700 transition">
-                <div className="text-4xl mb-4">⚡</div>
-                <h3 className="text-lg font-bold mb-2">Utility-Scale</h3>
-                <p className="text-sm text-gray-400">Large-scale solar farms, utility deployments</p>
+
+              <div className="bg-slate-800 p-6 sm:p-8 text-center hover:bg-slate-700 transition-colors duration-200 border border-slate-700">
+                <div className="w-12 h-12 bg-slate-700 flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
+                  </svg>
+                </div>
+                <h3 className="text-base sm:text-lg font-semibold mb-2">Agricultural</h3>
+                <p className="text-xs sm:text-sm text-slate-400">Farms, agribusiness</p>
               </div>
-              <div className="bg-slate-800 p-6 rounded-xl text-center hover:bg-slate-700 transition">
-                <div className="text-4xl mb-4">🏛️</div>
-                <h3 className="text-lg font-bold mb-2">Municipal</h3>
-                <p className="text-sm text-gray-400">Government buildings, public infrastructure</p>
+
+              <div className="bg-slate-800 p-6 sm:p-8 text-center hover:bg-slate-700 transition-colors duration-200 border border-slate-700">
+                <div className="w-12 h-12 bg-slate-700 flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+                  </svg>
+                </div>
+                <h3 className="text-base sm:text-lg font-semibold mb-2">Municipal</h3>
+                <p className="text-xs sm:text-sm text-slate-400">Government, public works</p>
+              </div>
+
+              <div className="bg-slate-800 p-6 sm:p-8 text-center hover:bg-slate-700 transition-colors duration-200 border border-slate-700 col-span-2 lg:col-span-1">
+                <div className="w-12 h-12 bg-slate-700 flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-base sm:text-lg font-semibold mb-2">Utility-Scale</h3>
+                <p className="text-xs sm:text-sm text-slate-400">Solar farms, IPP projects</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Partnership CTA */}
-        <div className="bg-gradient-to-br from-amber-500 via-yellow-500 to-amber-600 py-16 sm:py-24">
+        {/* Contact Section - Professional Dark Theme */}
+        <div id="contact" className="bg-slate-800 py-20 sm:py-28 border-t border-slate-700">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-              Ready to Partner with Florida's Best?
+            <span className="inline-block px-3 py-1 bg-slate-700 text-slate-300 text-sm font-medium mb-6 tracking-wide uppercase">Start Your Project</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+              Request a Consultation
             </h2>
-            <p className="text-lg sm:text-xl text-slate-800 mb-10 max-w-2xl mx-auto">
-              Whether you're an EPC, solar company, or roofing contractor, SunEdge Power provides the installation expertise
-              and operational excellence your projects demand.
+            <p className="text-lg sm:text-xl text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+              Discuss your C&I solar project with our team. From initial assessment through final commissioning,
+              we deliver turnkey EPC solutions tailored to your requirements.
             </p>
-            <button
-              onClick={() => setIsQuoteFormOpen(true)}
-              className="bg-slate-900 hover:bg-slate-800 text-white px-10 py-5 rounded-lg text-lg sm:text-xl font-bold transition transform hover:scale-105 shadow-2xl"
-            >
-              Discuss Partnership Opportunities
-            </button>
+            <div className="bg-slate-900 border border-slate-700 p-10 max-w-md mx-auto">
+              <div className="w-16 h-16 bg-cyan-600 flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              </div>
+              <p className="text-white font-bold text-2xl mb-2">SunEdge Power</p>
+              <p className="text-cyan-400 font-semibold text-lg mb-4">Full-Service C&I Solar EPC</p>
+              <div className="space-y-2 text-slate-300">
+                <p className="font-medium">Class A General Contractor</p>
+                <p className="text-sm text-slate-400">Licensed, Bonded & Insured</p>
+              </div>
+            </div>
           </div>
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="bg-slate-900 text-white py-12 border-t border-slate-800">
+      <footer className="bg-slate-900 text-white py-16 border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-amber-400">
-              SunEdge Power
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
+              SunEdge<span className="text-cyan-400">Power</span>
             </h2>
-            <p className="text-gray-400 mb-2">Florida's Premier C&I Solar Installation Partner</p>
-            <p className="text-gray-500 text-sm">&copy; 2024 SunEdge Power. All rights reserved.</p>
-            <p className="text-gray-500 text-sm mt-2">Licensed, Bonded & Insured • Class A General Contractor</p>
+            <p className="text-slate-400 font-medium tracking-widest text-sm mb-4 uppercase">
+              Engineering &bull; Procurement &bull; Construction
+            </p>
+            <p className="text-slate-400 mb-4">Full-Service C&I Solar EPC Contractor</p>
+            <p className="text-slate-500 text-sm mb-2">Class A General Contractor | Licensed, Bonded & Insured</p>
+            <p className="text-slate-600 text-sm">&copy; {new Date().getFullYear()} SunEdge Power. All rights reserved.</p>
           </div>
         </div>
       </footer>
 
-      {/* Quote Form Modal */}
-      <QuoteForm isOpen={isQuoteFormOpen} onClose={() => setIsQuoteFormOpen(false)} />
     </div>
   );
 }

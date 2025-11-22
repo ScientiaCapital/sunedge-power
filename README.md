@@ -1,20 +1,19 @@
 # SunEdge Power
 
-A clean, modern website for SunEdge Power solar company built on Convex.
+A clean, professional website for SunEdge Power - Florida's premier commercial and industrial solar installation partner.
 
 ## Tech Stack
 
 - **Frontend:** Vite + React 18 + TypeScript
 - **Styling:** Tailwind CSS
-- **Backend:** Convex (serverless, real-time database)
-- **Deploy:** Vercel
+- **Deploy:** Vercel or any static host
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js 18+
-- npm or yarn
+- npm
 
 ### Installation
 
@@ -22,107 +21,55 @@ A clean, modern website for SunEdge Power solar company built on Convex.
 # Install dependencies
 npm install
 
-# Run development server (starts both Vite and Convex)
+# Run development server
 npm run dev
 ```
 
-This will:
-1. Start the Vite dev server (frontend) at http://localhost:5173
-2. Start Convex dev server (backend)
-3. Open your browser automatically
-
-### Convex Setup
-
-On first run, Convex will ask you to:
-1. Log in or create a Convex account
-2. Create a new project
-3. Set up your deployment
-
-The Convex dashboard will open automatically where you can:
-- View your database in real-time
-- Set environment variables
-- Monitor functions
+The site will open at http://localhost:5173
 
 ## Project Structure
 
 ```
 sunedge-power/
-├── .claude/agents/          # Claude Code AI agents
-├── convex/                  # Convex backend
-│   ├── schema.ts           # Database schema
-│   └── leads.ts            # Lead management
 ├── src/
-│   ├── components/         # React components
-│   ├── App.tsx            # Main app component
-│   └── main.tsx           # Entry point
-├── public/                # Static assets
+│   ├── App.tsx           # Main app component
+│   ├── main.tsx          # Entry point
+│   └── index.css         # Tailwind styles
+├── public/               # Static assets
+├── index.html            # HTML template
 └── package.json
 ```
-
-## Features
-
-### Current
-- ✅ Homepage with solar info
-- ✅ Basic navigation
-- ✅ Convex database setup
-- ✅ Lead capture schema
-
-### Planned
-- 🚧 Contact form integration
-- 🚧 About page (two partners)
-- 🚧 Services page
-- 🚧 MCP-style features (memory, fetch, tools)
 
 ## Development
 
 ```bash
-# Development
-npm run dev              # Start dev server
-
-# Build
-npm run build           # Build for production
-npm run preview         # Preview production build
-
-# Linting
-npm run lint            # Run ESLint
+npm run dev       # Start dev server
+npm run build     # Build for production
+npm run preview   # Preview production build
+npm run lint      # Run ESLint
 ```
-
-## Convex CLI Commands
-
-```bash
-npx convex dev          # Start dev server
-npx convex deploy       # Deploy to production
-npx convex dashboard    # Open web dashboard
-npx convex env set      # Set environment variables
-```
-
-## Learning Resources
-
-- [Convex Docs](https://docs.convex.dev)
-- [Vite Docs](https://vitejs.dev)
-- [Tailwind CSS](https://tailwindcss.com)
 
 ## Deployment
 
-### Frontend (Vercel)
-```bash
-# Connect to Vercel
-vercel
+Build and deploy the `dist` folder to any static hosting:
 
-# Deploy
-vercel --prod
+```bash
+npm run build
+# Deploy the 'dist' folder
 ```
 
-### Backend (Convex)
+### Vercel (recommended)
 ```bash
-# Deploy Convex functions
-npx convex deploy
+vercel --prod
 ```
 
 ## License
 
 MIT
 
-## Contact
+## About
 
-SunEdge Power - Solar Energy Solutions
+SunEdge Power LLC
+Licensed, Bonded & Insured
+Class A General Contractor
+Florida's Premier C&I Solar Installation Partner
